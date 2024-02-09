@@ -10,6 +10,8 @@ public class PlayerMovemennt : MonoBehaviour
 {
     PlayerAnimations animations;
 
+    SwordEquip equip;
+
 
     public float value = 0;
     
@@ -19,10 +21,12 @@ public class PlayerMovemennt : MonoBehaviour
     int Speed = 5;
     private void Awake()
     {
+        equip=GetComponent<SwordEquip>();
         animations = GetComponent<PlayerAnimations>();
         inputs = new HackAndSlash();
         inputs.Player.Run.performed += Sprinting;
         inputs.Player.Run.canceled += ResetMethod;
+        inputs.Player.SwordEquip.performed+= equip.SwordEquipAndUnEquip;
         //inputs.Player.Fire.performed += Slash;
         //inputs.Player.Fire.canceled -= Slash; 
     }

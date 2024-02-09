@@ -26,4 +26,12 @@ public class PlayerAnimations : MonoBehaviour
         playerAnime.SetFloat("YValue", Yvalue);
         
     }
+    public void SwordEquip(bool Sword)
+    {
+        playerAnime.SetBool("Equip",Sword);
+    }
+    public void SwordEquipTrigger()
+    {
+        playerAnime.SetTrigger("EquipTrigger");
+    }
 }
