@@ -6,14 +6,24 @@ public class PlayerAnimations : MonoBehaviour
 
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   public  Animator playerAnime;
 
-    // Update is called once per frame
-    void Update()
+
+    public void MovementAnimation(float Xvalue,float Yvalue)
     {
+        float x, y;
+        x = playerAnime.GetFloat("XValue");
+        y = playerAnime.GetFloat("YValue");
+
+        Xvalue = Mathf.Lerp(x, Xvalue, 0.45f);
+        Yvalue = Mathf.Lerp(y, Yvalue, 0.45f);
+
+
+
+
+
+        playerAnime.SetFloat("XValue", Xvalue);
+        playerAnime.SetFloat("YValue", Yvalue);
         
     }
 }

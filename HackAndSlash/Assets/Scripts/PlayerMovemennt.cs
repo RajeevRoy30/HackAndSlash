@@ -8,24 +8,27 @@ using UnityEngine.InputSystem;
 public class PlayerMovemennt : MonoBehaviour
 
 {
+    PlayerAnimations animations;
+
+
     public float value = 0;
     
-    public Animator animations;
     HackAndSlash inputs;
 
     
     int Speed = 5;
     private void Awake()
     {
+        animations = GetComponent<PlayerAnimations>();
         inputs = new HackAndSlash();
         inputs.Player.Run.performed += Sprinting;
         inputs.Player.Run.canceled += ResetMethod;
-        inputs.Player.Fire.performed += Slash;
-        inputs.Player.Fire.canceled -= Slash; 
+        //inputs.Player.Fire.performed += Slash;
+        //inputs.Player.Fire.canceled -= Slash; 
     }
     public Vector2 moveinput;
     public Vector3 movinginput;
-
+    public float animeValue, walkAnimeValue = 0.5f, runAnimeValue = 1f;
    
     private void Update()
     {
@@ -35,7 +38,7 @@ public class PlayerMovemennt : MonoBehaviour
     public void Slash(InputAction.CallbackContext obj)
     {
         Debug.Log("attacked");
-        animations.SetTrigger("IsAttacked");
+        //animations.SetTrigger("IsAttacked");
         
     }
     public void Movement()
@@ -43,31 +46,46 @@ public class PlayerMovemennt : MonoBehaviour
         moveinput = inputs.Player.Move.ReadValue<Vector2>();
         movinginput.x = moveinput.x;
         movinginput.z = moveinput.y;
+        
 
-        if (moveinput.x != 0 || moveinput.y != 0)
+
+        if(inputs.Player.Run.IsPressed())
         {
-            if (value >= -1)
-            {
-                value += -1 * Time.deltaTime;
-            }
-            animations.SetFloat("XValue", value);
-            animations.SetFloat("YValue", 0);
-            transform.Translate(movinginput * Speed * Time.deltaTime);
-            animations.SetBool("isWalking", true);
+            animeValue = runAnimeValue;
 
-         
+           
         }
         else
         {
-            animations.SetBool("isWalking", false);
-
-            if (value >= 0)
-            {
-               value += 1 * Time.deltaTime;
-            }
+            animeValue = walkAnimeValue;
         }
+        
+        animations.MovementAnimation(moveinput.x*animeValue,moveinput.y*animeValue);
 
-        Debug.Log(moveinput);
+        //if (moveinput.x != 0 || moveinput.y != 0)
+        //{
+        //    if (value >= -1)
+        //    {
+        //        value += -1 * Time.deltaTime;
+        //    }
+        //    animations.SetFloat("Xvalue", value);
+        //    animations.SetFloat("Yvalue", 0);
+        //    transform.Translate(movinginput * Speed * Time.deltaTime);
+        //    animations.SetBool("isWalking", true);
+
+         
+        //}
+    //    else
+    //    {
+    //        animations.SetBool("isWalking", false);
+
+    //        if (value >= 0)
+    //        {
+    //           value += 1 * Time.deltaTime;
+    //        }
+    //    }
+
+    //    Debug.Log(moveinput);
     }
 
     private void OnEnable()
@@ -83,14 +101,16 @@ public class PlayerMovemennt : MonoBehaviour
     public void Sprinting(InputAction.CallbackContext obj)
     { 
       
-        animations.SetBool("isRunning", true);
+        animeValue=runAnimeValue;
+        Debug.Log("running");
 
     }
 
 
     public void ResetMethod(InputAction.CallbackContext obj)
     {
-        animations.SetBool("isRunning", false);
+        animeValue = walkAnimeValue;
+        //Debug.Log("not running");
     }
 
 
