@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovemennt : MonoBehaviour
 
-{ public Animator animations;
+{ 
+
+    
+    public Animator animations;
     HackAndSlash inputs;
 
+    
     int Speed = 5;
     private void Awake()
     {
@@ -22,14 +27,17 @@ public class PlayerMovemennt : MonoBehaviour
         movinginput.x = moveinput.x;
         movinginput.z = moveinput.y;
 
-       if(moveinput.x != 0 || moveinput.y != 0)
+        if (moveinput.x != 0 || moveinput.y != 0)
         {
             transform.Translate(movinginput * Speed * Time.deltaTime);
             animations.SetBool("isWalking", true);
+
+
         }
         else
-       {
+        {
             animations.SetBool("isWalking", false);
+          
 
         }
 
@@ -47,4 +55,5 @@ public class PlayerMovemennt : MonoBehaviour
     {
         inputs.Disable();   
     }
+    
 }
