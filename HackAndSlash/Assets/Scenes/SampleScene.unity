@@ -223,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 308392446}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.41, z: 4.41}
+  m_LocalPosition: {x: 0, y: 1.41, z: 48.2}
   m_LocalScale: {x: 11.679313, y: 11.679313, z: 11.679313}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -318,7 +318,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000030489367, y: -0.122183256, z: 0.0000000037534122,
     w: 0.9925076}
-  m_LocalPosition: {x: -0.61237526, y: 2.6599998, z: -9.309}
+  m_LocalPosition: {x: -0.61237526, y: 2.6859999, z: -9.309}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -633,7 +633,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 57425a46ba53954449f5b20fc3938904,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.41
+      value: 1.436
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 57425a46ba53954449f5b20fc3938904,
         type: 3}
@@ -807,7 +807,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000030489367, y: -0.122183256, z: 0.0000000037534122,
     w: 0.9925076}
-  m_LocalPosition: {x: -0.61237526, y: 2.6599998, z: -9.309}
+  m_LocalPosition: {x: -0.61237526, y: 2.6859999, z: -9.309}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -910,6 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2696fcc9e9d8940afb78d585a5d5cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  value: 0
   animations: {fileID: 1996179425}
   moveinput: {x: 0, y: 0}
   movinginput: {x: 0, y: 0, z: 0}
