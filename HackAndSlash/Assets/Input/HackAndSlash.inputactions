@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "Hold,Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwordEquip",
+                    "type": "Button",
+                    "id": "3dd2b595-e4ba-4c4a-a860-8e501ae0ec54",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -271,6 +280,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae7e917d-a2bd-4852-aa96-43fcc6d45439",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwordEquip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
