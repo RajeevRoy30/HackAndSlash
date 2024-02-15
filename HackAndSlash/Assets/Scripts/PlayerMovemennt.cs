@@ -9,13 +9,14 @@ public class PlayerMovemennt : MonoBehaviour
 
 {
     PlayerAnimations animations;
+    public Animator Anim;
 
     SwordEquip equip;
-
+    public ConbactManager combat;
 
     public float value = 0;
     
-    HackAndSlash inputs;
+    public HackAndSlash inputs;
 
     
     int Speed = 5;
@@ -29,6 +30,11 @@ public class PlayerMovemennt : MonoBehaviour
         inputs.Player.SwordEquip.performed+= equip.SwordEquipAndUnEquip;
         //inputs.Player.Fire.performed += Slash;
         //inputs.Player.Fire.canceled -= Slash; 
+
+        //inputs.Player.Attack.performed += AttackMethod;
+
+
+
     }
     public Vector2 moveinput;
     public Vector3 movinginput;
@@ -39,6 +45,16 @@ public class PlayerMovemennt : MonoBehaviour
         Movement();
         
     }
+
+    public void AttackMethod(InputAction.CallbackContext context)
+    {
+        Debug.Log("hnicef");
+        if (context.performed)
+        {
+            Anim.SetTrigger("Attack1");
+        }
+    }
+
     public void Slash(InputAction.CallbackContext obj)
     {
         Debug.Log("attacked");
