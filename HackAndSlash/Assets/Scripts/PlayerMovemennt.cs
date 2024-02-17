@@ -93,19 +93,19 @@ public class PlayerMovemennt : MonoBehaviour
         //    transform.Translate(movinginput * Speed * Time.deltaTime);
         //    animations.SetBool("isWalking", true);
 
-         
+
         //}
-    //    else
-    //    {
-    //        animations.SetBool("isWalking", false);
+        //    else
+        //    {
+        //        animations.SetBool("isWalking", false);
 
-    //        if (value >= 0)
-    //        {
-    //           value += 1 * Time.deltaTime;
-    //        }
-    //    }
+        //        if (value >= 0)
+        //        {
+        //           value += 1 * Time.deltaTime;
+        //        }
+        //    }
 
-    //    Debug.Log(moveinput);
+        //    Debug.Log(moveinput);
     }
 
     private void OnEnable()
@@ -116,7 +116,7 @@ public class PlayerMovemennt : MonoBehaviour
 
     private void OnDisable()
     {
-        inputs.Disable();   
+       // inputs.Disable();   
     }
     public void Sprinting(InputAction.CallbackContext obj)
     { 
