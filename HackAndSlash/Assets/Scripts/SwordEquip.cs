@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class SwordEquip : MonoBehaviour
-{
+{  
+    
     public bool EquipTrigger;
     public void SwordEquipAndUnEquip(InputAction.CallbackContext callbackContext)
     {
