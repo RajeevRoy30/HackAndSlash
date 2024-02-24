@@ -21,9 +21,6 @@ public class PlayerFootPlacement : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            anim.SetBool("Walk", !anim.GetBool("Walk"));
-
     }
 
     private void OnAnimatorIK(int layerIndex)

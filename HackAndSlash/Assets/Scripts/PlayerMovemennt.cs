@@ -15,7 +15,7 @@ public class PlayerMovemennt : MonoBehaviour
 
     public float value = 0;
 
-    HackAndSlash inputs;
+    public HackAndSlash inputs;
 
     private CharacterController characterController;
 

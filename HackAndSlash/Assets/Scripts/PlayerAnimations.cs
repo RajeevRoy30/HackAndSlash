@@ -6,9 +6,12 @@ public class PlayerAnimations : MonoBehaviour
 
 {
     // Start is called before the first frame update
-   public  Animator playerAnime;
+   private  Animator playerAnime;
 
-
+    private void Awake()
+    {
+        playerAnime = GetComponent<Animator>(); 
+    }
     public void MovementAnimation(float Xvalue,float Yvalue)
     {
         float x, y;
