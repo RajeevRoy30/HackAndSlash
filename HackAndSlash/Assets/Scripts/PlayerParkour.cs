@@ -11,7 +11,7 @@ public class PlayerParkourSystem : MonoBehaviour
     public float parkourRayLength;
     public float heightRayLength;
     public Vector3 playerOffSet;
-    public Vector3 playerAnimationOffset;
+   // public Vector3 playerAnimationOffset;
     private PlayerMovemennt Player;
 
   
@@ -21,6 +21,7 @@ public class PlayerParkourSystem : MonoBehaviour
    
     public Transform t;
     public Animator animator;
+    public CapsuleCollider capsuleCollider;
     public bool playerInAction;
     CharacterController c;
     private void Start()
@@ -28,6 +29,7 @@ public class PlayerParkourSystem : MonoBehaviour
         c= GetComponent<CharacterController>();
         Player=GetComponent<PlayerMovemennt>();
         Player.inputs.Player.Jump.started += PlayerAnimation;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     private void Update()
     {
@@ -79,12 +81,14 @@ public class PlayerParkourSystem : MonoBehaviour
         var anim=animator.GetNextAnimatorStateInfo(0);
         animator.applyRootMotion = true;
         c.enabled = false;
-        if(!anim.IsName(parkourAction.AnimationName))
+        capsuleCollider.enabled = true;
+        if (!anim.IsName(parkourAction.AnimationName))
         {
             Debug.Log("Not valid Animation");
         }
         yield return new WaitForSeconds(anim.length);
         c.enabled = true;
+        capsuleCollider.enabled = false;
         animator.applyRootMotion = false;
         playerInAction =false;
     }
