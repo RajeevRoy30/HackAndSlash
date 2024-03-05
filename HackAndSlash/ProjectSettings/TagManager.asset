@@ -5,12 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Pickable
+  - Enemy
+  - Waypoints
+  - pickup
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
