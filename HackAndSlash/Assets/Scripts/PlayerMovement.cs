@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovemennt : MonoBehaviour
 
 {
     PlayerAnimations animations;
@@ -15,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float value = 0;
 
-    public HackAndSlash inputs;
+    HackAndSlash inputs;
 
     private CharacterController characterController;
 
@@ -32,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
         inputs.Player.SwordEquip.performed += equip.SwordEquipAndUnEquip;
         //inputs.Player.Fire.performed += Slash;
         //inputs.Player.Fire.canceled -= Slash; 
-        
     }
     public Vector2 moveinput;
     public Vector3 movinginput;
@@ -53,13 +53,12 @@ public class PlayerMovement : MonoBehaviour
         //animations.SetTrigger("IsAttacked");
 
     }
-    public float y;
     public void Movement()
     {
         moveinput = inputs.Player.Move.ReadValue<Vector2>();
         movinginput.x = moveinput.x;
         movinginput.z = moveinput.y;
-        direction = new Vector3(moveinput.x * playerSpeed, y, moveinput.y * playerSpeed);
+        direction = new Vector3(moveinput.x * playerSpeed, 0f, moveinput.y * playerSpeed);
 
 
         characterController.Move(direction * Time.deltaTime);
@@ -107,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
         animeValue = walkAnimeValue;
         //Debug.Log("not running");
     }
+
 
 
 }
