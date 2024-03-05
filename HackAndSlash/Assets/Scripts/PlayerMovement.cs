@@ -6,7 +6,7 @@ using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovemennt : MonoBehaviour
 
 {
     PlayerAnimations animations;
