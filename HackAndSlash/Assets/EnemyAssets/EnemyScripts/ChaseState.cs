@@ -12,6 +12,7 @@ public class ChaseState : StateMachineBehaviour
     float speed = 10f;
     Transform player;
     public Animator animator;
+    public float attackRange = 3f;
     
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -34,18 +35,37 @@ public class ChaseState : StateMachineBehaviour
         //}
         if (EnemyFOV.instance.isDetected)
         {
-            animator.SetBool("IsChasing", false);
-            animator.SetTrigger("IsAttacking");
-        }
-        else if (EnemyFOV.instance.isChasing)
-        {
-            animator.SetBool("IsChasing", true);
             agent.SetDestination(player.position);
-            animator.SetTrigger("IsAttacking");
-       
+
+            Debug.Log(Vector3.Distance(player.position, animator.transform.position));
+
+            if (Vector3.Distance(player.position, animator.transform.position) <= attackRange)
+            {
+                animator.SetTrigger("IsAttacking");
+                Debug.Log("attacking");
+            }
+            //else
+            //{
+            //    // If the player is not within attack range, chase the player
+            //    animator.SetBool("IsChasing", true);
+            //    Debug.Log("chasing");
+            //}
+
+
+            //animator.SetBool("IsChasing", false);
+            
+            //animator.SetTrigger("IsAttacking");
         }
+       // else if (EnemyFOV.instance.isChasing)
+        //{
+        //    animator.SetBool("IsChasing", true);
+        //    agent.SetDestination(player.position);
+        //    animator.SetTrigger("IsAttacking");
+       
+        //}
         else
         {
+            animator.SetBool("IsChasing", false);
             animator.SetBool("IsPatrolling", true);
         }
 

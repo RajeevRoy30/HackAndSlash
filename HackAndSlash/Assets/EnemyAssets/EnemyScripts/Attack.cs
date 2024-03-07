@@ -10,7 +10,7 @@ public class Attack : StateMachineBehaviour
     public NavMeshAgent agent;
     public Animator animator;
     Transform player;
-    public float attackRange = 2f;
+    public float attackRange = 1.5f;
 
 
 
