@@ -21,12 +21,14 @@ public class ConbactManager : MonoBehaviour
     public void Awake()
     {
         instance = this;
+        input=new HackAndSlash();
        
     }
     void Start()
     {
         Move= GetComponent<PlayerMovemennt>();
-        Move.inputs.Player.Attack.performed += Attack;
+        input.Player.Attack.performed += Attack;
+        
         
     }
 
