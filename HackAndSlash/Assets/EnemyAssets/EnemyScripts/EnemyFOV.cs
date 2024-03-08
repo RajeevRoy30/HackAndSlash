@@ -26,6 +26,10 @@ public class EnemyFOV : MonoBehaviour
     public bool isDetected;
     public bool isChasing;
     public static EnemyFOV instance;
+    private NavMeshAgent agent;
+    private Transform player;
+    public float attackRange;
+    
     
 
     Vector3 Temp = new Vector3();
@@ -34,12 +38,13 @@ public class EnemyFOV : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {  
+        agent= GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
         scanInterval = 1.0f / scanFrequency;
 
-        instance= this;
+        instance = this;
     }
 
     // Update is called once per frame
@@ -69,6 +74,7 @@ public class EnemyFOV : MonoBehaviour
                 Objects.Add(obj);
                 if(obj.gameObject.tag == "Player")
                 {
+                    player=obj.gameObject.transform;
                     
                     isDetected = true;
                     isChasing = true;
@@ -82,6 +88,7 @@ public class EnemyFOV : MonoBehaviour
                 }
                 else
                 {
+                    player = null;
                    
                     isDetected = false;
                     isChasing = false;
@@ -241,6 +248,29 @@ public class EnemyFOV : MonoBehaviour
         }
         else
         {
+            animator.SetBool("IsPatrolling", true);
+        }
+    }
+    public void EnemyAttack()
+    {
+        if (EnemyFOV.instance.isDetected)
+        {
+            agent.SetDestination(player.position);
+
+            //Debug.Log(Vector3.Distance(player.position, animator.transform.position));
+
+            if (Vector3.Distance(player.position, animator.transform.position) <= attackRange)
+            {
+                animator.SetTrigger("IsAttacking");
+                Debug.Log("attacking");
+            }
+
+
+        }
+
+        else
+        {
+            animator.SetBool("IsChasing", false);
             animator.SetBool("IsPatrolling", true);
         }
     }

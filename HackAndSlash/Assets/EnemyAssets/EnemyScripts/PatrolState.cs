@@ -43,7 +43,7 @@ public class PatrolState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        EnemyFOV.instance.EnemyAttack();
         if (EnemyFOV.instance.isDetected)
         {
             animator.SetBool("IsChasing", EnemyFOV.instance.isDetected);

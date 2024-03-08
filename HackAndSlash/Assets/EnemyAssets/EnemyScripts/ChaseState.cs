@@ -29,45 +29,32 @@ public class ChaseState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        EnemyFOV.instance.EnemyAttack();
+            
         //agent.SetDestination(player.position);
         //{
 
         //}
-        if (EnemyFOV.instance.isDetected)
-        {
-            agent.SetDestination(player.position);
+    //    if (EnemyFOV.instance.isDetected)
+    //    {
+    //        agent.SetDestination(player.position);
 
-            Debug.Log(Vector3.Distance(player.position, animator.transform.position));
+    //        //Debug.Log(Vector3.Distance(player.position, animator.transform.position));
 
-            if (Vector3.Distance(player.position, animator.transform.position) <= attackRange)
-            {
-                animator.SetTrigger("IsAttacking");
-                Debug.Log("attacking");
-            }
-            //else
-            //{
-            //    // If the player is not within attack range, chase the player
-            //    animator.SetBool("IsChasing", true);
-            //    Debug.Log("chasing");
-            //}
+    //        if (Vector3.Distance(player.position, animator.transform.position) <= attackRange)
+    //        {
+    //            animator.SetTrigger("IsAttacking");
+    //            Debug.Log("attacking");
+    //        }
 
 
-            //animator.SetBool("IsChasing", false);
-            
-            //animator.SetTrigger("IsAttacking");
-        }
-       // else if (EnemyFOV.instance.isChasing)
-        //{
-        //    animator.SetBool("IsChasing", true);
-        //    agent.SetDestination(player.position);
-        //    animator.SetTrigger("IsAttacking");
-       
-        //}
-        else
-        {
-            animator.SetBool("IsChasing", false);
-            animator.SetBool("IsPatrolling", true);
-        }
+    //    }
+        
+    //    else
+    //    {
+    //        animator.SetBool("IsChasing", false);
+    //        animator.SetBool("IsPatrolling", true);
+    //    }
 
     }
 
