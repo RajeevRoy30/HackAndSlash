@@ -19,16 +19,16 @@ public class PlayerParkourSystem : MonoBehaviour
     public List<ParkourAction> parkourActions;
 
    
-    public Transform t;
+    //public Transform t;
     public Animator animator;
-    public CapsuleCollider capsuleCollider;
+    //public CapsuleCollider capsuleCollider;
     public bool playerInAction;
     CharacterController c;
     private void Start()
     {
         c= GetComponent<CharacterController>();
-        Player=GetComponent<PlayerMovemennt>();
-        Player.inputs.Player.Jump.started += PlayerAnimation;
+        
+        PlayerManger.instance.controllerInstance.playerInputActions.Player.Jump.started += PlayerAnimation;
         Cursor.lockState = CursorLockMode.Locked;
     }
     private void Update()
@@ -81,14 +81,12 @@ public class PlayerParkourSystem : MonoBehaviour
         var anim=animator.GetNextAnimatorStateInfo(0);
         animator.applyRootMotion = true;
         c.enabled = false;
-        capsuleCollider.enabled = true;
         if (!anim.IsName(parkourAction.AnimationName))
         {
             Debug.Log("Not valid Animation");
         }
         yield return new WaitForSeconds(anim.length);
         c.enabled = true;
-        capsuleCollider.enabled = false;
         animator.applyRootMotion = false;
         playerInAction =false;
     }

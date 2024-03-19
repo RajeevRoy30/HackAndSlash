@@ -26,10 +26,9 @@ public class ConbactManager : MonoBehaviour
     }
     void Start()
     {
-        Move= GetComponent<PlayerMovemennt>();
-        input.Player.Attack.performed += Attack;
-        
-        
+        PlayerManger.instance.controllerInstance.playerInputActions.Player.Attack.started += Attack;
+        PlayerManger.instance.controllerInstance.playerInputActions.Player.Block.started += PlayerManger.instance.animationsInstance.PlayerBlockUp;
+        PlayerManger.instance.controllerInstance.playerInputActions.Player.Block.canceled += PlayerManger.instance.animationsInstance.PlayerBlockDown;
     }
 
     
@@ -57,5 +56,6 @@ public class ConbactManager : MonoBehaviour
        canRecieveInput=!canRecieveInput;
     }
 
+    
 
 }

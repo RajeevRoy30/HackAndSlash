@@ -59,9 +59,22 @@ public class PlayerMovement : MonoBehaviour
         moveinput = inputs.Player.Move.ReadValue<Vector2>();
         movinginput.x = moveinput.x;
         movinginput.z = moveinput.y;
-        direction = new Vector3(moveinput.x * playerSpeed, y, moveinput.y * playerSpeed);
+        //direction = new Vector3(moveinput.x * playerSpeed, y, moveinput.y * playerSpeed);
 
+        Vector3 camForward = transform.InverseTransformVector(Camera.main.transform.forward);
+        Vector3 camRight = transform.InverseTransformVector(Camera.main.transform.right);
+        camForward.y = 0;
+        camRight.y = 0;
+        camForward = camForward.normalized;
+        camRight = camRight.normalized;
 
+        Vector3 relativeHorizontal = moveinput.y * camForward;
+        Vector3 relativeVertical = moveinput.x * camRight;
+        direction = (relativeHorizontal + relativeVertical) * playerSpeed;
+        Vector3 curPos = transform.position;
+        Vector3 newPos = new Vector3(movinginput.x, 0, moveinput.y);
+        Vector3 rotPos = curPos + newPos;
+        transform.LookAt(rotPos);
         characterController.Move(direction * Time.deltaTime);
 
 
