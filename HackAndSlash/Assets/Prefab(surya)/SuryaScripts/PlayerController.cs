@@ -1,4 +1,6 @@
 ﻿using Cinemachine;
+using Retro.ThirdPersonCharacter;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,7 +9,7 @@ using UnityEngine.UIElements;
 using UnityEngine.Windows;
 using Input = UnityEngine.Input;
 
-[RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
+[RequireComponent(typeof(CharacterController), typeof(Retro.ThirdPersonCharacter.PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
     public CinemachineVirtualCamera virtualCam;
     public Transform crouchCamPos;
     private Transform intialPos;
+    public bool canMove;
     private void Awake()
     {
         playerInputActions = new HackAndSlash();
@@ -58,7 +61,9 @@ public class PlayerController : MonoBehaviour
         playerInputActions.Player.Run.started += PlayerRunPressed;
         playerInputActions.Player.Run.canceled += PlayerRunReleased;
         playerInputActions.Player.SwordEquip.started += PlayerManger.instance.swordEquipInstance.SwordEquipAndUnEquip;
-        animations =GetComponent<PlayerAnimations>();
+        playerInputActions.Player.Jump.performed += PlayerManger.instance.animationsInstance.PlayerRoll;
+        playerInputActions.Player.Jump.started += PlayerManger.instance.parkourSystemInstance.PlayerParkour;
+      animations =GetComponent<PlayerAnimations>();
         playerSpeed = playerWalkSpeed;
         animeValue = 0.5f;
         controller = GetComponent<CharacterController>();
@@ -134,37 +139,39 @@ public class PlayerController : MonoBehaviour
         //    GameManager.Instance.actionAnim.Jump();
         //    playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         //}
-        
-        playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
-
-        input = playerInputActions.Player.Move.ReadValue<Vector2>();
-        move = new Vector3(input.x, 0, input.y);
-        move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
-        move.y = 0f;
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-        //isRUnning = runAction.ReadValue<float>() > .1f;
-
-        //if (isRUnning)
-        //{
-        //    animValue = 0.6f;
-        //    playerSpeed = Mathf.Lerp(playerSpeed,playerRunSpeed,0.5f);
-        //}
-        //else
-        //{
-        //    animValue = 0.3f;
-        //    playerSpeed = Mathf.Lerp(playerSpeed, playerWalkSpeed, 0.5f);
-        //}
-
-
-        //rotation towards cam dir
-        // PlayerManager.instance.actions.Movement(input.y * animValue, input.x * animValue);
-        animations.MovementAnimation(input.x * animeValue, input.y * animeValue);
-        if (input.x!=0||input.y!=0)
+        if (canMove)
         {
-            Quaternion targetRot = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, rotSpeed * Time.deltaTime);
+            playerVelocity.y += gravityValue * Time.deltaTime;
+            controller.Move(playerVelocity * Time.deltaTime);
+
+            input = playerInputActions.Player.Move.ReadValue<Vector2>();
+            move = new Vector3(input.x, 0, input.y);
+            move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
+            move.y = 0f;
+            controller.Move(move * Time.deltaTime * playerSpeed);
+
+            //isRUnning = runAction.ReadValue<float>() > .1f;
+
+            //if (isRUnning)
+            //{
+            //    animValue = 0.6f;
+            //    playerSpeed = Mathf.Lerp(playerSpeed,playerRunSpeed,0.5f);
+            //}
+            //else
+            //{
+            //    animValue = 0.3f;
+            //    playerSpeed = Mathf.Lerp(playerSpeed, playerWalkSpeed, 0.5f);
+            //}
+
+
+            //rotation towards cam dir
+            // PlayerManager.instance.actions.Movement(input.y * animValue, input.x * animValue);
+            animations.MovementAnimation(input.x * animeValue, input.y * animeValue);
+            if (input.x != 0 || input.y != 0)
+            {
+                Quaternion targetRot = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, rotSpeed * Time.deltaTime);
+            }
         }
        
 
@@ -172,16 +179,21 @@ public class PlayerController : MonoBehaviour
     
     void PlayerRunPressed(InputAction.CallbackContext callback)
     {
-        animeValue = 1.0f;
+        if(!playerInputActions.Player.Block.IsPressed())
+        {
+            animeValue = 1.0f;
+            StartCoroutine(SetPlayerSpeed(playerSpeed, playerRunSpeed,0.5f));
+
+        }
+        //playerSpeed = playerRunSpeed;
         //playerSpeed = Mathf.Lerp(playerSpeed, playerRunSpeed, 0.5f);
         //PlayerManager.instance.actions.Run(true);
-        playerSpeed = playerRunSpeed;
     }
 
     void PlayerRunReleased(InputAction.CallbackContext callback) 
     {
         animeValue = 0.5f;
-        playerSpeed = playerWalkSpeed;
+        StartCoroutine(SetPlayerSpeed(playerSpeed, playerWalkSpeed, 0.5f));
         //PlayerManager.instance.actions.Run(false);
         // playerSpeed = Mathf.Lerp(playerSpeed, playerWalkSpeed, 0.5f);
     }
@@ -195,5 +207,22 @@ public class PlayerController : MonoBehaviour
       
         ObjectPreview obj = new ObjectPreview();
         obj.Cleanup();
+    }
+    IEnumerator SetPlayerSpeed(float startValue, float endValue, float lerpDuration)
+    {
+        float timeElapsed = 0;
+
+        while (timeElapsed < lerpDuration)
+        {
+            playerSpeed = Mathf.Lerp(startValue, endValue, timeElapsed / lerpDuration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        playerSpeed = endValue;
+    }
+    void Dodge(InputAction.CallbackContext callback)
+    {
+        Debug.LogError("dodge Performed");
     }
 }

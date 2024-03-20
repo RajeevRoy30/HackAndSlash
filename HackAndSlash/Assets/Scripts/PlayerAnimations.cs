@@ -44,21 +44,31 @@ public class PlayerAnimations : MonoBehaviour
     public void AttackAnimOn()
     {
         Debug.LogError("On");
-        characterController.enabled=false;
+        //characterController.enabled=false;
+        PlayerManger.instance.controllerInstance.canMove = false;
         playerAnime.applyRootMotion = true;
     }
     public void AttackAnimOff()
     {
         Debug.LogError("Off");
-        characterController.enabled = true;
+        //characterController.enabled = true;
+        PlayerManger.instance.controllerInstance.canMove = true;
         playerAnime.applyRootMotion = false;
     }
     public void PlayerBlockUp(InputAction.CallbackContext context)
     {
-        playerAnime.SetBool("Block", true);
+        if (!PlayerManger.instance.controllerInstance.playerInputActions.Player.Run.IsPressed())
+        {
+            playerAnime.SetBool("Block", true);
+        }
     }
     public void PlayerBlockDown(InputAction.CallbackContext context)
     {
         playerAnime.SetBool("Block", false);
+    }
+
+    public void PlayerRoll(InputAction.CallbackContext context)
+    {
+        playerAnime.SetTrigger("Roll");
     }
 }

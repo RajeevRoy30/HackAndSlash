@@ -12,6 +12,7 @@ public class PlayerManger : MonoBehaviour
     public ConbactManager conbactManagerInstance;
     public PlayerAnimations animationsInstance;
     public SwordEquip swordEquipInstance;
+    public PlayerParkourSystem parkourSystemInstance;
     private void Awake()
     {
         if(instance == null)
@@ -26,5 +27,6 @@ public class PlayerManger : MonoBehaviour
         conbactManagerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<ConbactManager>();
         animationsInstance = GameObject.FindGameObjectWithTag("Player").GetComponent <PlayerAnimations>();
         swordEquipInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<SwordEquip>();
+        parkourSystemInstance= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParkourSystem>();
     }
 }
