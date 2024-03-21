@@ -93,7 +93,7 @@ public class PlayerParkourSystem : MonoBehaviour
     //
     //Vector3 temp;
 
-    private HitInfo EnvironmentDetection()//Detect the environment 
+    public HitInfo EnvironmentDetection()//Detect the environment 
     {
         var hitInfo=new HitInfo();
         var parkourRay = transform.position + playerOffSet;

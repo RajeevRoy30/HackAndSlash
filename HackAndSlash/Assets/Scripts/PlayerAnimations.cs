@@ -7,9 +7,8 @@ public class PlayerAnimations : MonoBehaviour
 
 {
     // Start is called before the first frame update
-   private  Animator playerAnime;
+    private  Animator playerAnime;
     public float dampValue;
-    public CharacterController characterController;
 
     private void Awake()
     {
@@ -43,14 +42,14 @@ public class PlayerAnimations : MonoBehaviour
 
     public void AttackAnimOn()
     {
-        Debug.LogError("On");
+        //Debug.LogError("On");
         //characterController.enabled=false;
         PlayerManger.instance.controllerInstance.canMove = false;
         playerAnime.applyRootMotion = true;
     }
     public void AttackAnimOff()
     {
-        Debug.LogError("Off");
+        //Debug.LogError("Off");
         //characterController.enabled = true;
         PlayerManger.instance.controllerInstance.canMove = true;
         playerAnime.applyRootMotion = false;
@@ -69,6 +68,16 @@ public class PlayerAnimations : MonoBehaviour
 
     public void PlayerRoll(InputAction.CallbackContext context)
     {
-        playerAnime.SetTrigger("Roll");
+        if(!PlayerManger.instance.parkourSystemInstance.EnvironmentDetection().hitFound)
+            playerAnime.SetTrigger("Roll");
+    }
+    public void SetCharacterController(float size)
+    {
+        playerAnime.transform.GetComponent<CharacterController>().height = size;
+    }
+
+    public void TakeDownAnimation()
+    {
+        playerAnime.SetTrigger("TakeDownBack");
     }
 }

@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour
         PlayerActions?.Invoke();
         
     }
+    public Transform Enemy;
     void Movement()
     {
         //groundedPlayer = controller.isGrounded;
@@ -139,6 +140,7 @@ public class PlayerController : MonoBehaviour
         //    GameManager.Instance.actionAnim.Jump();
         //    playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         //}
+       
         if (canMove)
         {
             playerVelocity.y += gravityValue * Time.deltaTime;
