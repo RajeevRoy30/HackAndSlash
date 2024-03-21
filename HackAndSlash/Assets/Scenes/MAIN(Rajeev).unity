@@ -141,6 +141,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paladin WProp J Nordstrom (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2461208238972414783, guid: 1711de97ec716794c93d797cf3d09026,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2836542651962225407, guid: 1711de97ec716794c93d797cf3d09026,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -331,6 +336,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 378026535}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &239049035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 239049037}
+  - component: {fileID: 239049036}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &239049036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239049035}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.16754651, y: 0.15183544, z: 1.2469127}
+  m_Center: {x: 1.14, y: 1.7600784, z: 0.39}
+--- !u!4 &239049037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239049035}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.5557681, y: -0.43730766, z: 0.43712997, w: 0.5556989}
+  m_LocalPosition: {x: -0.2600844, y: -0.9844822, z: 1.8798608}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1550159134}
+  m_LocalEulerAnglesHint: {x: 0, y: 13.613, z: 0}
 --- !u!4 &248955924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1302721226044453372, guid: 57425a46ba53954449f5b20fc3938904,
@@ -1101,12 +1159,20 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8096817587133524143, guid: 1711de97ec716794c93d797cf3d09026, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3986585903409785254, guid: 1711de97ec716794c93d797cf3d09026,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 239049037}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2461208238972414783, guid: 1711de97ec716794c93d797cf3d09026,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 439319410}
+    - targetCorrespondingSourceObject: {fileID: 4672190716602867355, guid: 1711de97ec716794c93d797cf3d09026,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1006550601}
   m_SourcePrefab: {fileID: 100100000, guid: 1711de97ec716794c93d797cf3d09026, type: 3}
 --- !u!1 &439319409 stripped
 GameObject:
@@ -1128,7 +1194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 10
   angle: 30
-  height: 2.21
+  height: 2
   meshColor: {r: 1, g: 0.08627451, b: 0.043137256, a: 1}
   scanFrequency: 30
   layers:
@@ -1136,6 +1202,7 @@ MonoBehaviour:
     m_Bits: 1
   Objects:
   - {fileID: 308392446}
+  - {fileID: 239049035}
   animator: {fileID: 439319413}
   isDetected: 0
   isChasing: 0
@@ -1626,6 +1693,33 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1996179437}
   m_SourcePrefab: {fileID: 100100000, guid: 57425a46ba53954449f5b20fc3938904, type: 3}
+--- !u!1 &1006550598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4672190716602867355, guid: 1711de97ec716794c93d797cf3d09026,
+    type: 3}
+  m_PrefabInstance: {fileID: 439319408}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1006550601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006550598}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.16754651, y: 0.15183544, z: 1.2469127}
+  m_Center: {x: 1.14, y: 1.7600784, z: 0.39}
 --- !u!1001 &1022986202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1643,6 +1737,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Paladin WProp J Nordstrom (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461208238972414783, guid: 1711de97ec716794c93d797cf3d09026,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2836542651962225407, guid: 1711de97ec716794c93d797cf3d09026,
         type: 3}
@@ -2039,6 +2138,12 @@ MonoBehaviour:
   - {fileID: 360651514}
   - {fileID: 790520593}
   - {fileID: 1841464277}
+--- !u!4 &1550159134 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3986585903409785254, guid: 1711de97ec716794c93d797cf3d09026,
+    type: 3}
+  m_PrefabInstance: {fileID: 439319408}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1556938420
 GameObject:
   m_ObjectHideFlags: 0
@@ -2614,6 +2719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
+  rotSpeed: 0
   moveinput: {x: 0, y: 0}
   movinginput: {x: 0, y: 0, z: 0}
   runSpeed: 6
@@ -2640,7 +2746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b7cc1f27536cb49be1dd7e5dab9180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnime: {fileID: 1996179425}
+  dampValue: 0
+  characterController: {fileID: 0}
 --- !u!114 &1996179437
 MonoBehaviour:
   m_ObjectHideFlags: 0
