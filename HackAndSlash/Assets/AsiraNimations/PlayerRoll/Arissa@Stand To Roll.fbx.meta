@@ -70,7 +70,7 @@ ModelImporter:
         data: 
         objectReferenceParameter: {fileID: 8990905986413597951, guid: 7b2c33021b110bf459f64ffc7bc97ac6,
           type: 3}
-        floatParameter: 0.5
+        floatParameter: 0.6
         intParameter: 0
         messageOptions: 0
       - time: 0.7867987

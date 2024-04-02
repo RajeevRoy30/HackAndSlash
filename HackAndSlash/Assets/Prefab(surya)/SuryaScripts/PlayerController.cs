@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
         playerInputActions.Player.Run.started += PlayerRunPressed;
         playerInputActions.Player.Run.canceled += PlayerRunReleased;
         playerInputActions.Player.SwordEquip.started += PlayerManger.instance.swordEquipInstance.SwordEquipAndUnEquip;
+        playerInputActions.Player.SwordEquipMid.started += PlayerManger.instance.swordEquipInstance.SwordEquipAndUnEquipMid;
         playerInputActions.Player.Jump.performed += PlayerManger.instance.animationsInstance.PlayerRoll;
         playerInputActions.Player.Jump.started += PlayerManger.instance.parkourSystemInstance.PlayerParkour;
       animations =GetComponent<PlayerAnimations>();
@@ -76,51 +77,51 @@ public class PlayerController : MonoBehaviour
         PlayerActions += Movement;
         
     }
-    void CrouchPressed(InputAction.CallbackContext callback)
-    {
-            virtualCam.LookAt = crouchCamPos;
-            virtualCam.Follow = crouchCamPos;
-          //  PlayerManager.instance.actions.CrouchBool(true);
-        //playerSpeed = Mathf.Lerp(playerSpeed, playerCrouchSpeed, 0.5f);
-            playerSpeed = playerCrouchSpeed;
-           // PlayerManager.instance.actions.CrouchMovement(input.y * 0.3f, input.x * 0.3f);
-    }
-    void CrouchReleased(InputAction.CallbackContext callback)
-    {
-        virtualCam.LookAt = intialPos;
-        virtualCam.Follow = intialPos;
-        playerSpeed = playerWalkSpeed;
-       // PlayerManager.instance.actions.CrouchBool(false);
-        controller.height = playerHeight;
-        //playerSpeed = 5f;
-        //GameManager.Instance.actionAnim.Walk();
-        return;
-    }
-    public Transform playerHeadTransform;
-    public float aimDistance;
-    public void AimAt()
-    {
+    //void CrouchPressed(InputAction.CallbackContext callback)
+    //{
+    //        virtualCam.LookAt = crouchCamPos;
+    //        virtualCam.Follow = crouchCamPos;
+    //      //  PlayerManager.instance.actions.CrouchBool(true);
+    //    //playerSpeed = Mathf.Lerp(playerSpeed, playerCrouchSpeed, 0.5f);
+    //        playerSpeed = playerCrouchSpeed;
+    //       // PlayerManager.instance.actions.CrouchMovement(input.y * 0.3f, input.x * 0.3f);
+    //}
+    //void CrouchReleased(InputAction.CallbackContext callback)
+    //{
+    //    virtualCam.LookAt = intialPos;
+    //    virtualCam.Follow = intialPos;
+    //    playerSpeed = playerWalkSpeed;
+    //   // PlayerManager.instance.actions.CrouchBool(false);
+    //    controller.height = playerHeight;
+    //    //playerSpeed = 5f;
+    //    //GameManager.Instance.actionAnim.Walk();
+    //    return;
+    //}
+    //public Transform playerHeadTransform;
+    //public float aimDistance;
+    //public void AimAt()
+    //{
 
-        //if (Physics.Raycast(playerHeadTransform.position, Camera.main.transform.forward, out RaycastHit hit, Mathf.Infinity, PlayerManager.instance.shootInstance.shootMask))
-        //{
-        //    if(hit.distance<aimDistance)
-        //    {
-        //        Debug.Log("dfyeguhds");
-        //    PlayerAimAt.position = hit.point;
-        //    Debug.DrawRay(playerHeadTransform.position, Camera.main.transform.forward * hit.distance, Color.green);
-        //    }
-        //    else
-        //    {
-        //        PlayerAimAt.position = playerHeadTransform.position + Camera.main.transform.forward * 20;
-        //        Debug.DrawRay(playerHeadTransform.position, Camera.main.transform.forward * 50f, Color.red);
-        //    }
-        //}
-        //else
-        //{
-            PlayerAimAt.position = playerHeadTransform.position + Camera.main.transform.forward * 20;
-            Debug.DrawRay(playerHeadTransform.position, Camera.main.transform.forward * 50f, Color.red);
-        //}
-    }
+    //    //if (Physics.Raycast(playerHeadTransform.position, Camera.main.transform.forward, out RaycastHit hit, Mathf.Infinity, PlayerManager.instance.shootInstance.shootMask))
+    //    //{
+    //    //    if(hit.distance<aimDistance)
+    //    //    {
+    //    //        Debug.Log("dfyeguhds");
+    //    //    PlayerAimAt.position = hit.point;
+    //    //    Debug.DrawRay(playerHeadTransform.position, Camera.main.transform.forward * hit.distance, Color.green);
+    //    //    }
+    //    //    else
+    //    //    {
+    //    //        PlayerAimAt.position = playerHeadTransform.position + Camera.main.transform.forward * 20;
+    //    //        Debug.DrawRay(playerHeadTransform.position, Camera.main.transform.forward * 50f, Color.red);
+    //    //    }
+    //    //}
+    //    //else
+    //    //{
+    //        PlayerAimAt.position = playerHeadTransform.position + Camera.main.transform.forward * 20;
+    //        Debug.DrawRay(playerHeadTransform.position, Camera.main.transform.forward * 50f, Color.red);
+    //    //}
+    //}
     void Update()
     {
         PlayerActions?.Invoke();

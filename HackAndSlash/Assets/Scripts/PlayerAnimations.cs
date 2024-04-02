@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,7 +17,7 @@ public class PlayerAnimations : MonoBehaviour
     }
     public void MovementAnimation(float Xvalue,float Yvalue)
     {
-        float x, y;
+        //float x, y;
         //x = playerAnime.GetFloat("XValue");
         //y = playerAnime.GetFloat("YValue");
 
@@ -31,14 +32,21 @@ public class PlayerAnimations : MonoBehaviour
         playerAnime.SetFloat("YValue", Yvalue, dampValue, Time.deltaTime);
         
     }
-    public void SwordEquip(bool Sword)
+    public void SwordEquipGreatSword(bool Sword)
     {
-        playerAnime.SetBool("Equip",Sword);
-    }
-    public void SwordEquipTrigger()
+        playerAnime.SetBool("GreatSword", Sword);
+    }public void SwordEquipMidSword(bool Sword)
     {
-        playerAnime.SetTrigger("EquipTrigger");
+        playerAnime.SetBool("MidSword", Sword);
     }
+    //public void SwordEquipTriggerGreatSword()
+    //{
+    //    playerAnime.SetTrigger("EquipTrigger");
+    //}
+    //public void MeleeEquip(bool equip)
+    //{
+    //    playerAnime.SetBool("Equip",equip);
+    //}
 
     public void AttackAnimOn()
     {
@@ -66,18 +74,50 @@ public class PlayerAnimations : MonoBehaviour
         playerAnime.SetBool("Block", false);
     }
 
+    public void TakeDownBrutalAnimation()
+    {
+        playerAnime.SetTrigger("TakeDownBack");
+    }
+    public void TakeDownStealthAnimation()
+    {
+        playerAnime.SetTrigger("TakeDownStealth");
+    }
     public void PlayerRoll(InputAction.CallbackContext context)
     {
         if(!PlayerManger.instance.parkourSystemInstance.EnvironmentDetection().hitFound)
             playerAnime.SetTrigger("Roll");
     }
+
+    //character controller setting throug events
     public void SetCharacterController(float size)
     {
         playerAnime.transform.GetComponent<CharacterController>().height = size;
     }
+    //public void SetCharacterControllerRadius(float size)
+    //{
+    //    playerAnime.transform.GetComponent<CharacterController>().radius = size;
+    //}
+    //public void characterControllerOn()
+    //{
+    //    playerAnime.transform.GetComponent<CharacterController>().enabled=true;
+    //    PlayerManger.instance.stealthKillInstance.enemyRef.transform.GetComponent<Collider>().enabled=true;
+    //}
+    //public void characterControllerOff()
+    //{
+    //    playerAnime.transform.GetComponent<CharacterController>().enabled = false;
+    //    PlayerManger.instance.stealthKillInstance.enemyRef.transform.GetComponent<Collider>().enabled = false;
+    //}
+    //public void SetPlayerStealthAttackPos()
+    //{
+    //    if (PlayerManger.instance.stealthKillInstance.enemyRef != null)
+    //    {
+    //        Debug.LogError("Stealth kill");
+    //        //transform.LookAt(PlayerManger.instance.stealthKillInstance.enemyRef.transform.GetChild(3).forward);
+    //        ////transform.rotation = PlayerManger.instance.stealthKillInstance.enemyRef.transform.rotation;
+    //        //transform.position = PlayerManger.instance.stealthKillInstance.enemyRef.transform.GetChild(3).position;
+    //        StartCoroutine(SetPlayerPosition(3));
+    //    }
 
-    public void TakeDownAnimation()
-    {
-        playerAnime.SetTrigger("TakeDownBack");
-    }
+    //}
+   
 }

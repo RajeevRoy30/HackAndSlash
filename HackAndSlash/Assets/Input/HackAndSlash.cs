@@ -98,6 +98,15 @@ public partial class @HackAndSlash: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwordEquipMid"",
+                    ""type"": ""Button"",
+                    ""id"": ""afe55418-be06-4a33-a68c-64076934b463"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -329,6 +338,17 @@ public partial class @HackAndSlash: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f8cd0c41-4932-4188-be12-e3304fc73274"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwordEquipMid"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -924,6 +944,7 @@ public partial class @HackAndSlash: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
+        m_Player_SwordEquipMid = m_Player.FindAction("SwordEquipMid", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1005,6 +1026,7 @@ public partial class @HackAndSlash: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Block;
     private readonly InputAction m_Player_Dodge;
+    private readonly InputAction m_Player_SwordEquipMid;
     public struct PlayerActions
     {
         private @HackAndSlash m_Wrapper;
@@ -1017,6 +1039,7 @@ public partial class @HackAndSlash: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Block => m_Wrapper.m_Player_Block;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
+        public InputAction @SwordEquipMid => m_Wrapper.m_Player_SwordEquipMid;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1050,6 +1073,9 @@ public partial class @HackAndSlash: IInputActionCollection2, IDisposable
             @Dodge.started += instance.OnDodge;
             @Dodge.performed += instance.OnDodge;
             @Dodge.canceled += instance.OnDodge;
+            @SwordEquipMid.started += instance.OnSwordEquipMid;
+            @SwordEquipMid.performed += instance.OnSwordEquipMid;
+            @SwordEquipMid.canceled += instance.OnSwordEquipMid;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1078,6 +1104,9 @@ public partial class @HackAndSlash: IInputActionCollection2, IDisposable
             @Dodge.started -= instance.OnDodge;
             @Dodge.performed -= instance.OnDodge;
             @Dodge.canceled -= instance.OnDodge;
+            @SwordEquipMid.started -= instance.OnSwordEquipMid;
+            @SwordEquipMid.performed -= instance.OnSwordEquipMid;
+            @SwordEquipMid.canceled -= instance.OnSwordEquipMid;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1268,6 +1297,7 @@ public partial class @HackAndSlash: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
+        void OnSwordEquipMid(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

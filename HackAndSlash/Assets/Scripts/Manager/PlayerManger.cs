@@ -13,6 +13,7 @@ public class PlayerManger : MonoBehaviour
     public PlayerAnimations animationsInstance;
     public SwordEquip swordEquipInstance;
     public PlayerParkourSystem parkourSystemInstance;
+    public StealthKill stealthKillInstance;
     private void Awake()
     {
         if(instance == null)
@@ -28,5 +29,6 @@ public class PlayerManger : MonoBehaviour
         animationsInstance = GameObject.FindGameObjectWithTag("Player").GetComponent <PlayerAnimations>();
         swordEquipInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<SwordEquip>();
         parkourSystemInstance= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParkourSystem>();
+        stealthKillInstance = GameObject.Find("StealthKill").GetComponent<StealthKill>();
     }
 }

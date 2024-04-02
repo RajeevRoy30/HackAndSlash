@@ -34,9 +34,6 @@ public class ConbactManager : MonoBehaviour
     
     public void Attack(InputAction.CallbackContext context)
     {
-         Debug.Log("hnicef");
-        
-        
             if(canRecieveInput)
             {
                 inputRecieved = true;
