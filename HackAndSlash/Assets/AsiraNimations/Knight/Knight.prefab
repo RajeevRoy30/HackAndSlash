@@ -553,7 +553,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457973679772275952}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3848647, y: -0.54803383, z: 0.31322938, w: 0.67336875}
+  m_LocalRotation: {x: 0.20578706, y: 0.79096735, z: -0.44570282, w: 0.3652004}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -599,6 +599,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -731,8 +738,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4974002312842964044}
   - {fileID: 2506085241699984648}
+  - {fileID: 6717604650378463881}
   m_Father: {fileID: 1041177444925928278}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763164907056896653
@@ -1047,7 +1054,7 @@ Transform:
   m_GameObject: {fileID: 2442005076409246786}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7013786, y: 4.5, z: -0.40964746}
+  m_LocalPosition: {x: -1.3596284, y: 4.5, z: 1.1017761}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1088,6 +1095,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1250,8 +1264,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2666478233900873421}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36015064, y: -0.55905014, z: 0.29311532, w: 0.6869046}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.19238542, y: 0.80663544, z: -0.41667676, w: 0.37243468}
+  m_LocalPosition: {x: -0.00000023841858, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1296,6 +1310,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1386,6 +1407,7 @@ GameObject:
   - component: {fileID: 1220665065395763204}
   - component: {fileID: 147977862889417686}
   - component: {fileID: 370234523834563182}
+  - component: {fileID: 3168602348935315057}
   m_Layer: 6
   m_Name: Knight
   m_TagString: Player
@@ -1406,8 +1428,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3880116236238737463}
   - {fileID: 616552676811464789}
+  - {fileID: 3880116236238737463}
   - {fileID: 2293530418704896865}
   - {fileID: 5650580791777708477}
   - {fileID: 5766803039147399715}
@@ -1424,10 +1446,10 @@ Animator:
   m_GameObject: {fileID: 3051094156185305847}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 3f2fcfa579057c741a8d2140ce5c91d6, type: 3}
-  m_Controller: {fileID: 9100000, guid: ce63c53769a2fd64995da3270ac5e954, type: 2}
+  m_Controller: {fileID: 9100000, guid: b40bff77d7545704bb2f1260fb507792, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1504,6 +1526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b7cc1f27536cb49be1dd7e5dab9180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnime: {fileID: 0}
   dampValue: 0.05
 --- !u!114 &4749523835446875974
 MonoBehaviour:
@@ -1559,6 +1582,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3bbde759abe5b3c4b88b0d0fac7c7b89, type: 2}
   animator: {fileID: 3711812493980272881}
   playerInAction: 0
+  LegPlacement: {fileID: 0}
 --- !u!114 &1220665065395763204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1573,7 +1597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 0
   playerWalkSpeed: 2.5
-  playerRunSpeed: 4
+  playerRunSpeed: 6
   playerCrouchSpeed: 3
   gravityValue: -9.81
   rotSpeed: 8
@@ -1612,6 +1636,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256f2ca58e816f24b80220bce60e7513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3168602348935315057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3051094156185305847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbfaa6bdea164b34d9d0cb5840a6db06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboDataHeavy:
+  - {fileID: 11400000, guid: 27d3ac0148e690d43aa60abfaa33f752, type: 2}
+  - {fileID: 11400000, guid: c1bc462f8d3bbab41812c87bcbf367aa, type: 2}
+  - {fileID: 11400000, guid: 1c81781bb24c9a54987e1a6f89f69d16, type: 2}
+  - {fileID: 11400000, guid: 43523db65a70a844aa00b63c8b5cc93b, type: 2}
+  - {fileID: 11400000, guid: dda516fb66a91bd499164c996666b432, type: 2}
+  - {fileID: 11400000, guid: 399f4f3ad1f5d714d9cf45d0986a0b0c, type: 2}
+  comboDataMid: []
+  comboCount: 0
+  playerRotate: 0
 --- !u!1 &3118096377131744240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,7 +1908,7 @@ Transform:
   m_GameObject: {fileID: 3644662315336923383}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000039458423, y: -0.0000055773507, z: 0.0001426812, w: 1}
-  m_LocalPosition: {x: -0.033634003, y: 0.1537363, z: -0.20911561}
+  m_LocalPosition: {x: -0.034, y: 0.154, z: -0.275}
   m_LocalScale: {x: 100.000015, y: 100.000015, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2041,8 +2087,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3984750010493045083}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3848647, y: -0.5480339, z: 0.3132294, w: 0.67336875}
-  m_LocalPosition: {x: 1.7013786, y: 4.5, z: -0.40964746}
+  m_LocalRotation: {x: 0.20578709, y: 0.79096735, z: -0.44570282, w: 0.36520046}
+  m_LocalPosition: {x: -1.3596284, y: 4.5, z: 1.1017761}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2332,6 +2378,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4631045800063094553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8877928216202700545}
+  m_Layer: 6
+  m_Name: HeavySwordHolderEquip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8877928216202700545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4631045800063094553}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.04163431, y: 0.013566169, z: 0.5254386, w: 0.84970397}
+  m_LocalPosition: {x: 0.059, y: 0.04, z: 0.018}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3521689045888072898}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4750375753221079730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,6 +2703,7 @@ Transform:
   - {fileID: 2875770270455130650}
   - {fileID: 4088880544564643728}
   - {fileID: 5334888836757462303}
+  - {fileID: 8877928216202700545}
   m_Father: {fileID: 1067126105478027009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5755760914015676935
@@ -2940,12 +3018,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6781092889078719152}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000039458423, y: -0.0000055773507, z: 0.0001426812, w: 1}
-  m_LocalPosition: {x: 0.00026647432, y: -1.0582571, z: 0.15387502}
-  m_LocalScale: {x: 100.000015, y: 100.000015, z: 100}
+  m_LocalRotation: {x: 0.000006409334, y: 0.0000023707294, z: 0.96596277, w: 0.2586813}
+  m_LocalPosition: {x: 0.6571764, y: 1.5907954, z: 0.31127527}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7580914247139134431}
+  m_Father: {fileID: 4274450958077834514}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &911572542009413155
 MeshFilter:
@@ -3413,6 +3491,38 @@ Transform:
   - {fileID: 6130278317006353531}
   m_Father: {fileID: 3162396394484081597}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8423259411095637786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4274450958077834514}
+  m_Layer: 6
+  m_Name: HeavySword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4274450958077834514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8423259411095637786}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.051065225, y: 0.14548597, z: 0.45118922, w: 0.87900764}
+  m_LocalPosition: {x: 0.41914663, y: 0.15024978, z: -0.00016249157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4974002312842964044}
+  m_Father: {fileID: 6717604650378463881}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -150}
 --- !u!1 &8477003045041109596
 GameObject:
   m_ObjectHideFlags: 3
@@ -3438,7 +3548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8477003045041109596}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37255278, y: -0.5536406, z: 0.30320907, w: 0.68025786}
+  m_LocalRotation: {x: 0.19911021, y: 0.79894364, z: -0.43124178, w: 0.36888313}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3484,6 +3594,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3638,6 +3755,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7958776891731999409}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8788429395059352627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6717604650378463881}
+  m_Layer: 6
+  m_Name: HeavySwordUnequip
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6717604650378463881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8788429395059352627}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.15374531, y: 0.011670674, z: -0.96583265, w: -0.20831136}
+  m_LocalPosition: {x: 0.19799997, y: 0.61799985, z: -0.28999972}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4274450958077834514}
+  m_Father: {fileID: 7580914247139134431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8799579250514114453
 GameObject:

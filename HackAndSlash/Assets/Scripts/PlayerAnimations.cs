@@ -8,7 +8,8 @@ public class PlayerAnimations : MonoBehaviour
 
 {
     // Start is called before the first frame update
-    private  Animator playerAnime;
+    [HideInInspector]
+    public  Animator playerAnime;
     public float dampValue;
 
     private void Awake()
@@ -50,17 +51,17 @@ public class PlayerAnimations : MonoBehaviour
 
     public void AttackAnimOn()
     {
-        //Debug.LogError("On");
-        //characterController.enabled=false;
-        PlayerManger.instance.controllerInstance.canMove = false;
-        playerAnime.applyRootMotion = true;
+        ////Debug.LogError("On");
+        ////characterController.enabled=false;
+        //PlayerManger.instance.controllerInstance.canMove = false;
+        //playerAnime.applyRootMotion = true;
     }
     public void AttackAnimOff()
     {
         //Debug.LogError("Off");
         //characterController.enabled = true;
-        PlayerManger.instance.controllerInstance.canMove = true;
-        playerAnime.applyRootMotion = false;
+        //PlayerManger.instance.controllerInstance.canMove = true;
+        //playerAnime.applyRootMotion = false;
     }
     public void PlayerBlockUp(InputAction.CallbackContext context)
     {

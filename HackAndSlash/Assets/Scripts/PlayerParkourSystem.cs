@@ -58,20 +58,28 @@ public class PlayerParkourSystem : MonoBehaviour
     //}
     public void PlayerParkour(InputAction.CallbackContext callback)
     {
-        var hitinfo=EnvironmentDetection();
-        if(hitinfo.hitFound && !playerInAction)
+        if(PlayerManger.instance.controllerInstance.playerInputActions.Player.Move.ReadValue<Vector2>().y>0)
         {
-            foreach(var action in parkourActions)
+            var hitinfo=EnvironmentDetection();
+            if(hitinfo.hitFound && !playerInAction)
             {
-                if(action.CheckForAnim(hitinfo, transform))
+                foreach(var action in parkourActions)
                 {
-                    ///
-                    StartCoroutine(PerformParkourAnimation(action));
-                    break;
+                    if(action.CheckForAnim(hitinfo, transform))
+                    {
+                        ///
+                        StartCoroutine(PerformParkourAnimation(action));
+                        break;
+                    }
                 }
             }
         }
+        else
+        {
+            return;
+        }
     }
+    [SerializeField] Transform LegPlacement;
    private IEnumerator PerformParkourAnimation(ParkourAction parkourAction)
     {
         playerInAction = true;
@@ -79,6 +87,8 @@ public class PlayerParkourSystem : MonoBehaviour
         yield return null;
 
         var anim=animator.GetNextAnimatorStateInfo(0);
+        var hitinfo = EnvironmentDetection();
+        //animator.MatchTarget(hitinfo.parkourHit.transform.position, hitinfo.parkourHit.transform.rotation, AvatarTarget.RightFoot, new MatchTargetWeightMask(Vector3.one, 1f), 0.12f, 0.16f);
         animator.applyRootMotion = true;
         animator.transform.GetComponent<CharacterController>().enabled = false;
         if (!anim.IsName(parkourAction.AnimationName))

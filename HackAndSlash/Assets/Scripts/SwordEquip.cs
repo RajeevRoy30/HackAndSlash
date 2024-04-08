@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 
 public class SwordEquip : MonoBehaviour
@@ -8,18 +9,7 @@ public class SwordEquip : MonoBehaviour
     
     public bool EquipTriggerHeavy;
     public bool EquipTriggerMid;
-    Animator action;
-    public Transform GreatSword, MidSword, Shelid;
-    public Transform RightHand, LeftHand;
-    public Transform GreatSwordParent, MidSwordParent, ShelidParent;
-    public void GreatSwordPlacementToRightHand()
-    {
-        GreatSword.transform.parent = RightHand;
-    }
-    private void OnEnable()
-    {
-         action = GetComponent<Animator>();
-    }
+    
     public void SwordEquipAndUnEquip(InputAction.CallbackContext callbackContext)
     {
         EquipTriggerHeavy = !EquipTriggerHeavy;
@@ -29,12 +19,16 @@ public class SwordEquip : MonoBehaviour
         //action.SwordEquipMidSword(false);
         if(EquipTriggerHeavy)
         {
-            action.CrossFade("Equip Great Sword ", 0.2f);
+            PlayerManger.instance.animationsInstance.playerAnime.CrossFade("Equip Great Sword ", 0.2f);
+            PlayerManger.instance.controllerInstance.playerInputActions.Player.Attack.started += PlayerManger.instance.comboSystemInstance.Combo;
+            PlayerManger.instance.controllerInstance.PlayerActions += PlayerManger.instance.comboSystemInstance.ExitAttack;
             PlayerManger.instance.animationsInstance.SwordEquipGreatSword(true);
         }
         else
         {
-            action.CrossFade("Unequip Great Sword ", 0.2f);
+            PlayerManger.instance.animationsInstance.playerAnime.CrossFade("Unequip Great Sword ", 0.2f);
+            PlayerManger.instance.controllerInstance.playerInputActions.Player.Attack.started -= PlayerManger.instance.comboSystemInstance.Combo;
+            PlayerManger.instance.controllerInstance.PlayerActions -= PlayerManger.instance.comboSystemInstance.ExitAttack;
             PlayerManger.instance.animationsInstance.SwordEquipGreatSword(false);
         }
         PlayerManger.instance.animationsInstance.SwordEquipMidSword(false);
@@ -48,12 +42,12 @@ public class SwordEquip : MonoBehaviour
         //action.SwordEquipGreatSword(false);
         if (EquipTriggerMid)
         {
-            action.CrossFade("Draw Sword 2", 0.2f);
+            PlayerManger.instance.animationsInstance.playerAnime.CrossFade("Draw Sword 2", 0.2f);
             PlayerManger.instance.animationsInstance.SwordEquipMidSword(true);
         }
         else
         {
-            action.CrossFade("Draw Sword 2 0", 0.2f);
+            PlayerManger.instance.animationsInstance.playerAnime.CrossFade("Draw Sword 2 0", 0.2f);
             PlayerManger.instance.animationsInstance.SwordEquipMidSword(false);
         }
         PlayerManger.instance.animationsInstance.SwordEquipGreatSword(false);

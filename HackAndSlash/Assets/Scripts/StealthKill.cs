@@ -57,7 +57,7 @@ public class StealthKill : MonoBehaviour
         isTakeDown = true;
        
         animator.CrossFade(parkourAction.AnimationName, 0.2f);
-        Debug.LogError(1);
+        
         //StartCoroutine(SetPlayerTarget())
         yield return null;
 
@@ -66,14 +66,14 @@ public class StealthKill : MonoBehaviour
         //PlayerManger.instance.controllerInstance.canMove = false;
         animator.GetComponent<CharacterController>().enabled = false;
         StartCoroutine(SetPlayerTarget(parkourAction.animTime));
-        Debug.LogError(2);
+        
         if (!anim.IsName(parkourAction.AnimationName))
         {
             Debug.LogError("!Not valid Animation");
             isTakeDown = false;
         }
         yield return new WaitForSeconds(anim.length);
-        Debug.LogError(3);
+       
         //PlayerManger.instance.controllerInstance.canMove = true;
         animator.GetComponent<CharacterController>().enabled = true;
         animator.applyRootMotion = false;
