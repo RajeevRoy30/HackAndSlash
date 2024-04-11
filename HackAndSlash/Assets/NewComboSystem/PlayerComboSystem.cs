@@ -8,6 +8,7 @@ public class PlayerComboSystem : MonoBehaviour
 {
     public List<AttackData> comboDataHeavy;
     public List<AttackData> comboDataMid;
+    public List<AttackData> Temp;
     public int comboCount;
     
     Animator animator;
@@ -18,7 +19,7 @@ public class PlayerComboSystem : MonoBehaviour
     //public float comboToEnd;
     //public float clickToEnd;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         animator = PlayerManger.instance.animationsInstance.playerAnime;
         //PlayerManger.instance.controllerInstance.playerInputActions.Player.Attack.started += Combo;
@@ -28,22 +29,26 @@ public class PlayerComboSystem : MonoBehaviour
     public void Combo(InputAction.CallbackContext callback)
     {
         CancelInvoke(nameof(ExitCombo));
-        if(comboCount>comboDataHeavy.Count-1) {
+        if(comboCount> Temp.Count-1) {
             comboCount = 0;
         }
-        Debug.LogError(lastComboEnd);
-        if (Time.time - lastComboEnd > 0.8f && comboCount< comboDataHeavy.Count) 
+        //Debug.LogError(lastComboEnd);
+        if (Time.time - lastComboEnd > 0.8f && comboCount< Temp.Count) 
         {
-            Debug.LogError("combo");
+            //Debug.LogError("combo");
             lastComboEnd = Time.time;
             if (Time.time-lastClickedTime>=0.5f)
             {
-                Debug.LogError("click");
-                StartCoroutine(PlayerComboAnimation(comboDataHeavy[comboCount]));
+                //Debug.LogError("click");
+                StartCoroutine(PlayerComboAnimation(Temp[comboCount]));
                 comboCount++;
                 lastClickedTime = Time.time;
                 
             }
+        }
+        else
+        {
+            return;
         }
     }
     IEnumerator PlayerComboAnimation(AttackData data)
@@ -51,8 +56,10 @@ public class PlayerComboSystem : MonoBehaviour
         PlayerManger.instance.controllerInstance.canMove = false;
         playerRotate = true;
         //animator.Play(data.AnimationName);
+        Debug.Log("no");
         animator.CrossFade(data.AnimationName, 0.2f);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(data.endTime);
+        Debug.Log("yes");
         playerRotate = false;
         PlayerManger.instance.controllerInstance.canMove = true;
     }
@@ -65,9 +72,9 @@ public class PlayerComboSystem : MonoBehaviour
     }
     public void ExitAttack()
     {
-        if (animator.GetCurrentAnimatorStateInfo(1).length > 0.9 && animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack"))
+        if (animator.GetCurrentAnimatorStateInfo(1).length > 0.9 && animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack")|| animator.GetCurrentAnimatorStateInfo(1).IsTag("AttackExit"))
         {
-            Debug.LogError("end"+lastComboEnd);
+            //Debug.LogError("end"+lastComboEnd);
             Invoke(nameof(ExitCombo), 1.5f);
         }
     }

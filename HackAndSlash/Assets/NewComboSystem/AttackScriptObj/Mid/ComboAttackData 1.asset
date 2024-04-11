@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ComboAttackData 1
   m_EditorClassIdentifier: 
   startTime: 0
-  endTime: 0.8
+  endTime: 1.12
   animKeyFrameToPerformNextCombo: 0
   AnimationName: Sword And Shield Attack
   anim: {fileID: 0}

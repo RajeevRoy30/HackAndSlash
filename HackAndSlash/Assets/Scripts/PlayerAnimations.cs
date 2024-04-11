@@ -53,14 +53,14 @@ public class PlayerAnimations : MonoBehaviour
     {
         ////Debug.LogError("On");
         ////characterController.enabled=false;
-        //PlayerManger.instance.controllerInstance.canMove = false;
+        PlayerManger.instance.controllerInstance.canMove = false;
         //playerAnime.applyRootMotion = true;
     }
     public void AttackAnimOff()
     {
         //Debug.LogError("Off");
         //characterController.enabled = true;
-        //PlayerManger.instance.controllerInstance.canMove = true;
+        PlayerManger.instance.controllerInstance.canMove = true;
         //playerAnime.applyRootMotion = false;
     }
     public void PlayerBlockUp(InputAction.CallbackContext context)

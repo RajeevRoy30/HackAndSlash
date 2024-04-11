@@ -56,23 +56,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.027264731
-        functionName: AttackAnimOn
-        data: 
-        objectReferenceParameter: {fileID: 3051094156185305847, guid: 80ec25e5ec42ca24fbe1d6a90ba76787,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.98112094
-        functionName: AttackAnimOff
-        data: 
-        objectReferenceParameter: {fileID: 3051094156185305847, guid: 80ec25e5ec42ca24fbe1d6a90ba76787,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
