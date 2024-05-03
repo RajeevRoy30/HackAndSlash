@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MAIN(Rajeev).unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  m_configObjects: {}
+    path: Assets/Morgan/Scenes/Morgan Demo Scene.unity
+    guid: e6a542eda2ab1d447bae862d06f14280
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: c44eb2ca923fedc4dbec88e388b53ca7,
+      type: 2}

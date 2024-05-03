@@ -72,7 +72,7 @@ public class PlayerComboSystem : MonoBehaviour
     }
     public void ExitAttack()
     {
-        if (animator.GetCurrentAnimatorStateInfo(1).length > 0.9 && animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack")|| animator.GetCurrentAnimatorStateInfo(1).IsTag("AttackExit"))
+        if (animator.GetCurrentAnimatorStateInfo(1).length > 0.9 && animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack"))
         {
             //Debug.LogError("end"+lastComboEnd);
             Invoke(nameof(ExitCombo), 1.5f);

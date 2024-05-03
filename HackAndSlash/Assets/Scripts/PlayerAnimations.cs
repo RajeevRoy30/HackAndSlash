@@ -85,6 +85,7 @@ public class PlayerAnimations : MonoBehaviour
     }
     public void PlayerRoll(InputAction.CallbackContext context)
     {
+        Debug.LogError("pop");
         if(!PlayerManger.instance.parkourSystemInstance.EnvironmentDetection().hitFound)
             playerAnime.SetTrigger("Roll");
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackData : ScriptableObject
 {
 
-    public float startTime, endTime,animKeyFrameToPerformNextCombo;
+    public float startTime, endTime,InputReciveTime,AnimCompleteTime;
     public string AnimationName;
     public AnimationClip anim;
 }

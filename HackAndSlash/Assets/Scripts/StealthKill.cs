@@ -62,7 +62,7 @@ public class StealthKill : MonoBehaviour
         yield return null;
 
         var anim = animator.GetNextAnimatorStateInfo(0);
-        animator.applyRootMotion = true;
+        //animator.applyRootMotion = true;
         //PlayerManger.instance.controllerInstance.canMove = false;
         animator.GetComponent<CharacterController>().enabled = false;
         StartCoroutine(SetPlayerTarget(parkourAction.animTime));
@@ -76,7 +76,7 @@ public class StealthKill : MonoBehaviour
        
         //PlayerManger.instance.controllerInstance.canMove = true;
         animator.GetComponent<CharacterController>().enabled = true;
-        animator.applyRootMotion = false;
+        //animator.applyRootMotion = false;
         isTakeDown = false;
     }
     IEnumerator SetPlayerTarget(float lerpDuration)

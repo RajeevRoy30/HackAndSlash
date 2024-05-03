@@ -145,6 +145,7 @@ public class SwordEquip : MonoBehaviour
     [Header("Sword Equip and Unequip IK")]
     public MultiParentConstraint GreatSwordEquipAndUnequip;
     public MultiParentConstraint MidSwordEquipAndUnequip;
+    public MultiParentConstraint MidSheildEquipAndUnequip;
     public WeightedTransformArray a;
     IEnumerator SetSwordToHandHeavySword(float time)
     {
@@ -170,9 +171,11 @@ public class SwordEquip : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         a = MidSwordEquipAndUnequip.data.sourceObjects;
+        a = MidSheildEquipAndUnequip.data.sourceObjects;
         a.SetWeight(0, 0f);
         a.SetWeight(1, 1f);
         MidSwordEquipAndUnequip.data.sourceObjects = a;
+        MidSheildEquipAndUnequip.data.sourceObjects = a;
     }
     IEnumerator SetSwordToShethMid(float time)
     {
@@ -182,5 +185,6 @@ public class SwordEquip : MonoBehaviour
         a.SetWeight(1, 0f);
         a.Clear();
         MidSwordEquipAndUnequip.data.sourceObjects = a;
+        MidSheildEquipAndUnequip.data.sourceObjects = a;
     }
 }

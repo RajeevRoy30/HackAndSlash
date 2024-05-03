@@ -609,6 +609,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -625,7 +632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360651513}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.052215263, y: 0.9291452, z: -0.336397, w: 0.1442212}
+  m_LocalRotation: {x: 0.052215263, y: 0.92914534, z: -0.336397, w: 0.14422119}
   m_LocalPosition: {x: -0.9094049, y: 2.5000002, z: 4.920396}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -801,21 +808,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 423925190205591491, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 34f10dc4426d0954a9fde6ef0d812012, type: 2}
     - target: {fileID: 2461208238972414783, guid: 1711de97ec716794c93d797cf3d09026,
         type: 3}
       propertyPath: m_Name
       value: Paladin WProp J Nordstrom
       objectReference: {fileID: 0}
-    - target: {fileID: 2836542651962225407, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 34f10dc4426d0954a9fde6ef0d812012, type: 2}
     - target: {fileID: 2984804044700610949, guid: 1711de97ec716794c93d797cf3d09026,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -866,104 +863,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3109163970871305753, guid: 1711de97ec716794c93d797cf3d09026,
+    - target: {fileID: 5722005241085475116, guid: 1711de97ec716794c93d797cf3d09026,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: Objects.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 34f10dc4426d0954a9fde6ef0d812012, type: 2}
-    - target: {fileID: 7650271480406245919, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7650271480406245919, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8064111237085001705, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: m_Speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8064111237085001705, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: m_Height
-      value: 2.35
-      objectReference: {fileID: 0}
-    - target: {fileID: 8064111237085001705, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8064111237085001705, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8064111237085001705, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: avoidancePriority
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 8064111237085001705, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8920573526078544442, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 34f10dc4426d0954a9fde6ef0d812012, type: 2}
-    m_RemovedComponents:
-    - {fileID: 8096817587133524143, guid: 1711de97ec716794c93d797cf3d09026, type: 3}
+      objectReference: {fileID: 308392446}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2461208238972414783, guid: 1711de97ec716794c93d797cf3d09026,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 439319410}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1711de97ec716794c93d797cf3d09026, type: 3}
---- !u!1 &439319409 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2461208238972414783, guid: 1711de97ec716794c93d797cf3d09026,
-    type: 3}
-  m_PrefabInstance: {fileID: 439319408}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &439319410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439319409}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6093c80edefce2f4c85a4a4d8a098519, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 10
-  angle: 30
-  height: 2.21
-  meshColor: {r: 1, g: 0.08627451, b: 0.043137256, a: 1}
-  scanFrequency: 30
-  layers:
-    serializedVersion: 2
-    m_Bits: 1
-  Objects:
-  - {fileID: 308392446}
-  animator: {fileID: 439319413}
-  isDetected: 0
-  isChasing: 0
-  DistBtw: 1.45
---- !u!95 &439319413 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5461314576912087383, guid: 1711de97ec716794c93d797cf3d09026,
-    type: 3}
-  m_PrefabInstance: {fileID: 439319408}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &537686383
 GameObject:
   m_ObjectHideFlags: 3
@@ -1243,6 +1152,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1589,6 +1505,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1679,6 +1602,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2121,6 +2051,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2473,6 +2410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 0
+  rotSpeed: 0
   moveinput: {x: 0, y: 0}
   movinginput: {x: 0, y: 0, z: 0}
   runSpeed: 6
@@ -2500,6 +2438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnime: {fileID: 1996179425}
+  dampValue: 0
 --- !u!114 &1996179437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2512,7 +2451,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594e606644dff9e4b8c81c10ebaa071d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquipTrigger: 0
+  EquipTriggerHeavy: 0
+  EquipTriggerMid: 0
+  GreatSwordEquipAndUnequip: {fileID: 0}
+  MidSwordEquipAndUnequip: {fileID: 0}
+  a:
+    m_Length: 0
+    m_Item0:
+      transform: {fileID: 0}
+      weight: 0
+    m_Item1:
+      transform: {fileID: 0}
+      weight: 0
+    m_Item2:
+      transform: {fileID: 0}
+      weight: 0
+    m_Item3:
+      transform: {fileID: 0}
+      weight: 0
+    m_Item4:
+      transform: {fileID: 0}
+      weight: 0
+    m_Item5:
+      transform: {fileID: 0}
+      weight: 0
+    m_Item6:
+      transform: {fileID: 0}
+      weight: 0
+    m_Item7:
+      transform: {fileID: 0}
+      weight: 0
 --- !u!1001 &2083791187
 PrefabInstance:
   m_ObjectHideFlags: 0
