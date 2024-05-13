@@ -20,8 +20,28 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		public StarterAssetsCustom inputActions;
+        private void Awake()
+        {
+			inputActions = new StarterAssetsCustom();
+			
+		}
+        private void Start()
+        {
+            inputActions.Player.Z.started += PlayerManger.instance.swordEquipInstance.SwordEquipAndUnEquipHeavy;
+            inputActions.Player.X.started += PlayerManger.instance.swordEquipInstance.SwordEquipAndUnEquipMid;
+        }
+        private void OnEnable()
+        {
+            inputActions.Enable();
+        }
+        private void OnDisable()
+        {
+            inputActions.Disable();
+        }
+
 #if ENABLE_INPUT_SYSTEM
-		public void OnMove(InputValue value)
+        public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}

@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Morgan/Scenes/Morgan Demo Scene.unity
     guid: e6a542eda2ab1d447bae862d06f14280
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: c44eb2ca923fedc4dbec88e388b53ca7,
+    com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}

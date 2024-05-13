@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         playerInputActions.Enable();
         playerInputActions.Player.Run.started += PlayerRunPressed;
         playerInputActions.Player.Run.canceled += PlayerRunReleased;
-        playerInputActions.Player.SwordEquip.started += PlayerManger.instance.swordEquipInstance.SwordEquipAndUnEquip;
+        playerInputActions.Player.SwordEquip.started += PlayerManger.instance.swordEquipInstance.SwordEquipAndUnEquipHeavy;
         playerInputActions.Player.SwordEquipMid.started += PlayerManger.instance.swordEquipInstance.SwordEquipAndUnEquipMid;
         playerInputActions.Player.Jump.performed += PlayerManger.instance.animationsInstance.PlayerRoll;
         playerInputActions.Player.Jump.started += PlayerManger.instance.parkourSystemInstance.PlayerParkour;

@@ -101,7 +101,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
 #endif
-        private Animator _animator;
+        public Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
@@ -110,6 +110,11 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
+        public bool canMove;
+
+        public int HitCount;
+
+        public bool _Dodge;
         private bool IsCurrentDeviceMouse
         {
             get
@@ -266,10 +271,13 @@ namespace StarterAssets
 
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+            if(canMove)
+            {
+                // move the player
+                _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
+                                 new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
-            // move the player
-            _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+            }
 
             // update animator if using character
             if (_hasAnimator)
@@ -387,6 +395,17 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+        }
+
+        public void SwordColliderEnable()
+        {
+            PlayerManger.instance.SwordDetectionInstance.detect.enabled = true;
+            Debug.LogError("Enable");
+        }
+        public void SwordColliderDisable()
+        {
+            PlayerManger.instance.SwordDetectionInstance.detect.enabled =false;
+            Debug.LogError("Disable");
         }
     }
 }

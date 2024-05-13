@@ -9,18 +9,24 @@ public class AttackTransition : StateMachineBehaviour
     {
         animator.SetInteger("ComboValue", 0);
         animator.applyRootMotion = false;
-        PlayerManger.instance.controllerInstance.canMove = true;
+        PlayerManger.instance.ThirdPersonControllerInstance.canMove = true;
         //PlayerManger.instance.controllerInstance._swordCollider.enabled=false;
+        PlayerManger.instance.ThirdPersonControllerInstance.HitCount = 0;
     }
     [SerializeField] int _comboCount;
+    Vector2 evadeValue;
+    
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(PlayerManger.instance.controllerInstance.playerInputActions.Player.Attack.WasPressedThisFrame())
+        if(PlayerManger.instance.starterAssetsInputsInstance.inputActions.Player.Attack.WasPressedThisFrame())
         {
             animator.SetInteger("ComboValue", _comboCount);
         }
-                
+        PerformDodge(animator);
+
+
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -40,4 +46,12 @@ public class AttackTransition : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
+    void PerformDodge(Animator anim)
+    {
+        if (PlayerManger.instance.starterAssetsInputsInstance.inputActions.Player.Dodge.WasPressedThisFrame() && PlayerManger.instance.ThirdPersonControllerInstance._Dodge==false)
+        {
+            anim.SetTrigger("Dodge");
+            PlayerManger.instance.ThirdPersonControllerInstance._Dodge=true;
+        }
+    }
 }

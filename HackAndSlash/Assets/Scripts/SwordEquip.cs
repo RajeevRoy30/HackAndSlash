@@ -10,17 +10,10 @@ public class SwordEquip : MonoBehaviour
     public bool EquipTriggerHeavy;
     public bool EquipTriggerMid;
     
-    public void SwordEquipAndUnEquip(InputAction.CallbackContext callbackContext)
+    public void SwordEquipAndUnEquipHeavy(InputAction.CallbackContext callbackContext)
     {
         EquipTriggerHeavy = !EquipTriggerHeavy;
-        if(EquipTriggerMid) 
-        {
-            StartCoroutine(SwitchToMidToHeavy(0.8f));
-        }
-        else
-        {
-            HeavySwordCondition(EquipTriggerHeavy);
-        }
+        PlayerManger.instance.ThirdPersonControllerInstance._animator.SetBool("HeavySword", EquipTriggerHeavy);
 
         //action.SwordEquipTriggerGreatSword();
         //action.SwordEquipGreatSword(EquipTriggerHeavy);
@@ -50,14 +43,7 @@ public class SwordEquip : MonoBehaviour
     public void SwordEquipAndUnEquipMid(InputAction.CallbackContext callbackContext)
     {
         EquipTriggerMid = !EquipTriggerMid;
-        if(EquipTriggerHeavy) 
-        {
-            StartCoroutine(SwitchToHeavyToMid(0.8f));
-        }
-        else
-        {
-            MidSwordCondition(EquipTriggerMid);
-        }
+        PlayerManger.instance.ThirdPersonControllerInstance._animator.SetBool("MidSword", EquipTriggerMid);
         //PlayerAnimations action=GetComponent<PlayerAnimations>();
         //action.SwordEquipTriggerGreatSword();
         //action.SwordEquipMidSword(EquipTriggerMid);
@@ -81,7 +67,7 @@ public class SwordEquip : MonoBehaviour
         //    PlayerManger.instance.animationsInstance.SwordEquipMidSword(false);
         //    StartCoroutine(SetSwordToShethMid(0.2f));
         // }
-        PlayerManger.instance.animationsInstance.SwordEquipGreatSword(false);
+        //PlayerManger.instance.animationsInstance.SwordEquipGreatSword(false);
     }
 
     void HeavySwordCondition(bool condition)

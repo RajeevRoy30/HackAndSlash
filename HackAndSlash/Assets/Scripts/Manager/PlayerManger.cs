@@ -1,3 +1,5 @@
+using Invector.vCharacterController;
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,6 +17,11 @@ public class PlayerManger : MonoBehaviour
     public PlayerParkourSystem parkourSystemInstance;
     public StealthKill stealthKillInstance;
     public PlayerComboSystem comboSystemInstance;
+
+    public ThirdPersonController ThirdPersonControllerInstance;
+    public StarterAssetsInputs starterAssetsInputsInstance;
+    public SwordDetection SwordDetectionInstance;
+
     private void Awake()
     {
         if(instance == null)
@@ -25,10 +32,12 @@ public class PlayerManger : MonoBehaviour
         {
             Destroy(instance);
         }
+        ThirdPersonControllerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>();
+        starterAssetsInputsInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<StarterAssetsInputs>();
+        swordEquipInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<SwordEquip>();
         controllerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         conbactManagerInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<ConbactManager>();
         animationsInstance = GameObject.FindGameObjectWithTag("Player").GetComponent <PlayerAnimations>();
-        swordEquipInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<SwordEquip>();
         parkourSystemInstance= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParkourSystem>();
         comboSystemInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerComboSystem>();
         stealthKillInstance = GameObject.Find("StealthKill").GetComponent<StealthKill>();

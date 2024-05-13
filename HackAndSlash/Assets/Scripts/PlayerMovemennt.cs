@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         inputs = new HackAndSlash();
         inputs.Player.Run.performed += Sprinting;
         inputs.Player.Run.canceled += ResetMethod;
-        inputs.Player.SwordEquip.performed += equip.SwordEquipAndUnEquip;
+        inputs.Player.SwordEquip.performed += equip.SwordEquipAndUnEquipHeavy;
         //inputs.Player.Fire.performed += Slash;
         //inputs.Player.Fire.canceled -= Slash; 
         

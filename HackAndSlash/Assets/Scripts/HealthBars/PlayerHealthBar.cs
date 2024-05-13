@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private float _health = 100;
+    public float Health { get => this._health=Mathf.Clamp(this._health,0,100); set => this._health = value; }
+    public bool hitDetect;
+    public void ApplyKnockBackForce(Rigidbody rb)
     {
-        
+         hitDetect=true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //IEnumerator KnockBackForce(Rigidbody rigidbody) 
+    //{
+    //    rigidbody.isKinematic=false;
+
+    //}
 }

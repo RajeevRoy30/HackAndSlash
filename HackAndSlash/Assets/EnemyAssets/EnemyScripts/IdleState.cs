@@ -1,43 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class IdleState : StateMachineBehaviour
 {
-    float timer;
-    [Range(0f, 20f)]
-    public float idleToOther;
-
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    bool check;
+    public EnemyData enemyData;
+    [SerializeField] float TimeToAttack;
+    float TimerCounter;
+    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer = 0;
+        if(!check)
+        {
+            enemyData = animator.GetComponent<EnemyData>();
+        }
+        enemyData.SwordCollider.enabled = false;
+        enemyData.agent.isStopped = true;
+        enemyData.agent.speed = 0;
+        TimerCounter = Time.time;
+        if(animator.applyRootMotion==true) { animator.applyRootMotion = false; }
+        animator.SetInteger("EnemyHit", 0);
     }
-
-    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer += Time.deltaTime;
-
-        if (timer > idleToOther)
-            animator.SetBool("IsPatrolling", true);
+        EnemyHolder.instance.EnemyLookAt(animator.transform);
+        //if(EnemyHolder.instance.CalculateDistance(animator.transform.position) > enemyData.minDistanceWalk && EnemyHolder.instance.CalculateDistance(animator.transform.position) <= enemyData.maxDistanceWalk)
+        //{
+        //}
+        //Debug.Log(EnemyHolder.instance.CalculateDistance(animator.transform.position));
+        //Debug.Log(EnemyHolder.instance.CalculateDistance(animator.transform.position) > enemyData.minDistanceWalk && EnemyHolder.instance.CalculateDistance(animator.transform.position) <= enemyData.maxDistanceWalk);
+        animator.SetBool("EnemyWalk", EnemyHolder.instance.CalculateDistance(animator.transform.position)>enemyData.minDistanceWalk&& EnemyHolder.instance.CalculateDistance(animator.transform.position)<=enemyData.maxDistanceWalk);
+        animator.SetBool("EnemyIdle", EnemyHolder.instance.CalculateDistance(animator.transform.position) <= enemyData.minDistanceWalk);
+        animator.SetBool("EnemyChase", EnemyHolder.instance.CalculateDistance(animator.transform.position) > enemyData.maxDistanceWalk);
+        if (Time.time - TimerCounter >= TimeToAttack)
+        {
+            TimerCounter = Time.time;
+            Debug.Log("pop");
+            animator.SetInteger("EnemyAttack", 1);
+        }
     }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    //// OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
 }
