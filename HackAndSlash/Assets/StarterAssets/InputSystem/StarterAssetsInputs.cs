@@ -30,6 +30,7 @@ namespace StarterAssets
         {
             inputActions.Player.Z.started += PlayerManger.instance.swordEquipInstance.SwordEquipAndUnEquipHeavy;
             inputActions.Player.X.started += PlayerManger.instance.swordEquipInstance.SwordEquipAndUnEquipMid;
+			inputActions.Player.Interact.started += PlayerManger.instance.stealthKillInstance.TakeDown;
         }
         private void OnEnable()
         {

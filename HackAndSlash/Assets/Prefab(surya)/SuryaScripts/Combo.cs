@@ -31,6 +31,7 @@ public class Combo : StateMachineBehaviour
             //mono.StartCoroutine(Motion(stateInfo.length,animator));
             PlayerManger.instance.ThirdPersonControllerInstance.HitCount = enemyHitCount;
         }
+       
 
     }
 

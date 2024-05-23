@@ -98,6 +98,15 @@ public partial class @StarterAssetsCustom: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""a389af2c-8ccd-4222-b20d-af0ec909b402"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -320,6 +329,17 @@ public partial class @StarterAssetsCustom: IInputActionCollection2, IDisposable
                     ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""52b1b2bb-6ee6-4296-86f4-ba274ab64e57"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -384,6 +404,7 @@ public partial class @StarterAssetsCustom: IInputActionCollection2, IDisposable
         m_Player_X = m_Player.FindAction("X", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -453,6 +474,7 @@ public partial class @StarterAssetsCustom: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_X;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Dodge;
+    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @StarterAssetsCustom m_Wrapper;
@@ -465,6 +487,7 @@ public partial class @StarterAssetsCustom: IInputActionCollection2, IDisposable
         public InputAction @X => m_Wrapper.m_Player_X;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -498,6 +521,9 @@ public partial class @StarterAssetsCustom: IInputActionCollection2, IDisposable
             @Dodge.started += instance.OnDodge;
             @Dodge.performed += instance.OnDodge;
             @Dodge.canceled += instance.OnDodge;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -526,6 +552,9 @@ public partial class @StarterAssetsCustom: IInputActionCollection2, IDisposable
             @Dodge.started -= instance.OnDodge;
             @Dodge.performed -= instance.OnDodge;
             @Dodge.canceled -= instance.OnDodge;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -589,5 +618,6 @@ public partial class @StarterAssetsCustom: IInputActionCollection2, IDisposable
         void OnX(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

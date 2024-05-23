@@ -40,6 +40,6 @@ public class PlayerManger : MonoBehaviour
         animationsInstance = GameObject.FindGameObjectWithTag("Player").GetComponent <PlayerAnimations>();
         parkourSystemInstance= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParkourSystem>();
         comboSystemInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerComboSystem>();
-        stealthKillInstance = GameObject.Find("StealthKill").GetComponent<StealthKill>();
+        stealthKillInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<StealthKill>();
     }
 }
