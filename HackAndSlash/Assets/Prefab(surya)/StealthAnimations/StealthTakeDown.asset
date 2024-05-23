@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f7a682a3a4afe44a5f9b7679a31e3e, type: 3}
+  m_Name: StealthTakeDown
+  m_EditorClassIdentifier: 
+  animAction: Stealth Assassination
+  minActionHeight: 2.8
+  maxActionHeight: 0
+  animPos: {x: 0.20410539, y: 0.32437038, z: -0.10254065}
+  animRot: {x: 0, y: 0, z: 0}
+  animTime: 2.8
