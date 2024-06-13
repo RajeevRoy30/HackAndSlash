@@ -346,6 +346,8 @@ GameObject:
   m_Component:
   - component: {fileID: 239049037}
   - component: {fileID: 239049036}
+  - component: {fileID: 239049038}
+  - component: {fileID: 239049039}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -368,7 +370,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -389,6 +391,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1550159134}
   m_LocalEulerAnglesHint: {x: 0, y: 13.613, z: 0}
+--- !u!114 &239049038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239049035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5586961670ba69f4fbb0174416fbe322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &239049039
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239049035}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &248955924 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1302721226044453372, guid: 57425a46ba53954449f5b20fc3938904,
@@ -1064,7 +1105,7 @@ PrefabInstance:
     - target: {fileID: 2984804044700610949, guid: 1711de97ec716794c93d797cf3d09026,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.81
+      value: 10.95
       objectReference: {fileID: 0}
     - target: {fileID: 2984804044700610949, guid: 1711de97ec716794c93d797cf3d09026,
         type: 3}
@@ -1201,13 +1242,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   Objects:
+  - {fileID: 1519997604}
   - {fileID: 308392446}
   - {fileID: 239049035}
   animator: {fileID: 439319413}
   isDetected: 0
   isChasing: 0
   attackRange: 3.5
-  DistBtw: 1.5
+  DistBtw: 0
 --- !u!95 &439319413 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5461314576912087383, guid: 1711de97ec716794c93d797cf3d09026,
@@ -2138,6 +2180,12 @@ MonoBehaviour:
   - {fileID: 360651514}
   - {fileID: 790520593}
   - {fileID: 1841464277}
+--- !u!1 &1519997604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1426935222102762193, guid: 4e9972cbbf9e5e74b8ac3c3813167632,
+    type: 3}
+  m_PrefabInstance: {fileID: 176547627588157616}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1550159134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3986585903409785254, guid: 1711de97ec716794c93d797cf3d09026,
@@ -2747,7 +2795,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dampValue: 0
-  characterController: {fileID: 0}
 --- !u!114 &1996179437
 MonoBehaviour:
   m_ObjectHideFlags: 0
