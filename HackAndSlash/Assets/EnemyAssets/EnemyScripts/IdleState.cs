@@ -5,15 +5,14 @@ using UnityEngine.AI;
 
 public class IdleState : StateMachineBehaviour
 {
-    bool check;
     public EnemyData enemyData;
     [SerializeField] float TimeToAttack;
     float TimerCounter;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(!check)
+        if (enemyData == null && animator.TryGetComponent(out EnemyData enemy))
         {
-            enemyData = animator.GetComponent<EnemyData>();
+            enemyData = enemy;
         }
         enemyData.SwordCollider.enabled = false;
         enemyData.agent.isStopped = true;
@@ -33,7 +32,7 @@ public class IdleState : StateMachineBehaviour
         animator.SetBool("EnemyWalk", EnemyHolder.instance.CalculateDistance(animator.transform.position)>enemyData.minDistanceWalk&& EnemyHolder.instance.CalculateDistance(animator.transform.position)<=enemyData.maxDistanceWalk);
         animator.SetBool("EnemyIdle", EnemyHolder.instance.CalculateDistance(animator.transform.position) <= enemyData.minDistanceWalk);
         animator.SetBool("EnemyChase", EnemyHolder.instance.CalculateDistance(animator.transform.position) > enemyData.maxDistanceWalk);
-        if (Time.time - TimerCounter >= TimeToAttack)
+        if (Time.time - TimerCounter >= TimeToAttack && animator.GetInteger("EnemyHitValue")==0)
         {
             TimerCounter = Time.time;
             Debug.Log("pop");

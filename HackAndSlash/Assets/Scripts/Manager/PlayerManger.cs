@@ -21,6 +21,7 @@ public class PlayerManger : MonoBehaviour
     public ThirdPersonController ThirdPersonControllerInstance;
     public StarterAssetsInputs starterAssetsInputsInstance;
     public SwordDetection SwordDetectionInstance;
+    public PlayerCombatSystem combatSystemInstance;
 
     private void Awake()
     {
@@ -41,5 +42,6 @@ public class PlayerManger : MonoBehaviour
         parkourSystemInstance= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerParkourSystem>();
         comboSystemInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerComboSystem>();
         stealthKillInstance = GameObject.FindGameObjectWithTag("Player").GetComponent<StealthKill>();
+        combatSystemInstance= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatSystem>();
     }
 }

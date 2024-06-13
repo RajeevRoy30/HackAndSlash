@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7074718603082795061
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7d9753da763da46a77921ebad4fc57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  comboCount: 2
 --- !u!1102 &-7068386779684718471
 AnimatorState:
   serializedVersion: 6
@@ -35,33 +22,6 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: -203655887218126122, guid: 97c799d01f5d78f4a8a9ba3a8b748a60,
     type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &-5371376653445528265
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 2Hand-Sword-Attack1
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours:
-  - {fileID: -7074718603082795061}
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f7b3d9329a284374eb69c7d59ca448e6, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -109,9 +69,6 @@ AnimatorStateMachine:
     m_State: {fileID: -4667292441429668192}
     m_Position: {x: 290, y: 110, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -5371376653445528265}
-    m_Position: {x: -50, y: 240, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 6911660206414212020}
     m_Position: {x: 140, y: 370, z: 0}
   - serializedVersion: 1
@@ -123,6 +80,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -225454901986676954}
     m_Position: {x: 360, y: 230, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -4389952395774575692}
+    m_Position: {x: 92.96423, y: 265.00125, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -133,6 +93,32 @@ AnimatorStateMachine:
   m_ExitPosition: {x: 790, y: -50, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -4667292441429668192}
+--- !u!1102 &-4389952395774575692
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 2Hand-Sword-Attack1
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 0190d9d49b72e76498730f7430d0ea10, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &-225454901986676954
 AnimatorState:
   serializedVersion: 6
@@ -154,7 +140,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: f0618873969cfde4aa5e4a97c7512b70,
+  m_Motion: {fileID: -203655887218126122, guid: ec0ae692dcc9957408109acfe77c4849,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -277,7 +263,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: aa97e851daeb5ef4b8e3fbaffccaeb6a,
+  m_Motion: {fileID: -203655887218126122, guid: 6927664e090322b44944d3c24ad476c2,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 

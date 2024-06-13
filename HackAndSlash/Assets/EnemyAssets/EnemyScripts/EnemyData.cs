@@ -21,6 +21,8 @@ public class EnemyData : MonoBehaviour
 
     public float Health = 100f;
     public Collider SwordCollider;
+
+    public int hitValue; 
     private void OnEnable()
     {
         agent=GetComponent<NavMeshAgent>();

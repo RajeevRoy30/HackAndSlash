@@ -12,6 +12,7 @@ public class Attack : StateMachineBehaviour
     //public Animator animator;
     //Transform player;
     //public float attackRange = 2f;
+    EnemyData enemyData;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -24,14 +25,22 @@ public class Attack : StateMachineBehaviour
         {
             animator.applyRootMotion=true;
         }
+        if (enemyData == null && animator.TryGetComponent(out EnemyData enemy))
+        {
+            enemyData = enemy;
+        }
+        enemyData.hitValue = HitValue;
         //animator.transform.GetComponent<NavMeshAgent>().enabled=false;
 
     }
-    [SerializeField] int comboCount;
+    [SerializeField] int comboCount,HitValue;
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetInteger("EnemyAttack", comboCount);
+        if(EnemyHolder.instance.CalculateDistance(animator.transform.position)<=1.5f)
+            animator.SetInteger("EnemyAttack", comboCount);
+        else
+            animator.SetInteger("EnemyAttack", 0);
     }
 
 

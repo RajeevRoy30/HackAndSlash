@@ -69,8 +69,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 1
   _canReciveInput: 0
+  _canApplyRootMotion: 1
   _comboCount: 6
   enemyHitCount: 0
+  startMotion: 0
 --- !u!1101 &-9010864618987758438
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -249,6 +251,33 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-8844968561043445877
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Take 001 5
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: -229104375152661813}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: a4036630f90c263468051dda2643de38, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1101 &-8736299129818316671
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -286,8 +315,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 0
   _canReciveInput: 0
+  _canApplyRootMotion: 0
   _comboCount: 2
   enemyHitCount: 0
+  startMotion: 0
 --- !u!1102 &-8516698469776426217
 AnimatorState:
   serializedVersion: 6
@@ -310,7 +341,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 363aef08b12b27c46a51c6905e4995de, type: 3}
+  m_Motion: {fileID: 7400000, guid: 969e083fb8543b14783667275c242e82, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -404,8 +435,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 1
   _canReciveInput: 0
+  _canApplyRootMotion: 1
   _comboCount: 4
   enemyHitCount: 1
+  startMotion: 0
 --- !u!1101 &-7948039182838030643
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -957,6 +990,7 @@ AnimatorStateMachine:
   - {fileID: -8946451724063458634}
   - {fileID: -8927265115057358574}
   - {fileID: 3884550862285761055}
+  - {fileID: -1038403528541802978}
   m_EntryTransitions: []
   m_StateMachineTransitions:
   - first: {fileID: -4683163246934423594}
@@ -1467,8 +1501,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 1
   _canReciveInput: 0
+  _canApplyRootMotion: 1
   _comboCount: 0
   enemyHitCount: 0
+  startMotion: 0
 --- !u!114 &-3485286351719839518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1484,8 +1520,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 1
   _canReciveInput: 0
+  _canApplyRootMotion: 1
   _comboCount: 7
   enemyHitCount: 0
+  startMotion: 0
 --- !u!1101 &-3474504112669056807
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1577,6 +1615,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _comboCount: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  DistanceToGround: 0.12
 --- !u!114 &-2754864926249029407
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1592,8 +1634,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 1
   _canReciveInput: 0
+  _canApplyRootMotion: 1
   _comboCount: 3
   enemyHitCount: 1
+  startMotion: 0
 --- !u!114 &-2506980368590397225
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1607,6 +1651,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _comboCount: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  DistanceToGround: 0.12
 --- !u!1101 &-2376539426101472767
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1773,7 +1821,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.68
+  m_ExitTime: 0.63
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1868,8 +1916,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 0
   _canReciveInput: 0
+  _canApplyRootMotion: 0
   _comboCount: 2
   enemyHitCount: 0
+  startMotion: 0
 --- !u!1102 &-1183902449543177723
 AnimatorState:
   serializedVersion: 6
@@ -1924,6 +1974,34 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &-1038403528541802978
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 6
+    m_ConditionEvent: HitValue
+    m_EventTreshold: 4
+  - m_ConditionMode: 1
+    m_ConditionEvent: HeavySword
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: -8844968561043445877}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
 --- !u!114 &-1000961114723490458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1939,8 +2017,10 @@ MonoBehaviour:
   _keyFrameMin: 0.4
   _keyFrameMax: 0.8
   _canReciveInput: 0
+  _canApplyRootMotion: 0
   _comboCount: 5
   enemyHitCount: 1
+  startMotion: 0
 --- !u!1101 &-857388842041774786
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2018,6 +2098,28 @@ AnimatorStateTransition:
   m_TransitionOffset: 0
   m_ExitTime: 0.7916667
   m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &-229104375152661813
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 5074796298471374976}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -2122,6 +2224,18 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
+  - m_Name: IKRightFootWeight
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: IKLeftFootWeight
+    m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -2132,7 +2246,7 @@ AnimatorController:
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 0
-    m_IKPass: 0
+    m_IKPass: 1
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
 --- !u!1101 &17142108872818635
@@ -2302,8 +2416,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 0
   _canReciveInput: 0
+  _canApplyRootMotion: 0
   _comboCount: 4
   enemyHitCount: 0
+  startMotion: 0
 --- !u!114 &1051078906472893250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2319,8 +2435,10 @@ MonoBehaviour:
   _keyFrameMin: 0.4
   _keyFrameMax: 0.8
   _canReciveInput: 0
+  _canApplyRootMotion: 0
   _comboCount: 4
   enemyHitCount: 1
+  startMotion: 0
 --- !u!1101 &1064673050364211225
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2627,8 +2745,10 @@ MonoBehaviour:
   _keyFrameMin: 0.4
   _keyFrameMax: 0.8
   _canReciveInput: 0
+  _canApplyRootMotion: 0
   _comboCount: 2
   enemyHitCount: 1
+  startMotion: 0
 --- !u!1107 &3219445126528319413
 AnimatorStateMachine:
   serializedVersion: 6
@@ -2673,7 +2793,7 @@ AnimatorStateMachine:
     m_Position: {x: 840, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6943016274947719959}
-    m_Position: {x: 840, y: 120, z: 0}
+    m_Position: {x: 850, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3021429003240825939}
     m_Position: {x: 850, y: 200, z: 0}
@@ -2689,6 +2809,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -8941040914049939582}
     m_Position: {x: 590, y: 180, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -8844968561043445877}
+    m_Position: {x: 100, y: -240, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -4964423202287258125}
@@ -2764,8 +2887,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 1
   _canReciveInput: 0
+  _canApplyRootMotion: 1
   _comboCount: 2
   enemyHitCount: 1
+  startMotion: 0.2
 --- !u!1101 &3884550862285761055
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2866,8 +2991,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 0
   _canReciveInput: 0
+  _canApplyRootMotion: 0
   _comboCount: 3
   enemyHitCount: 0
+  startMotion: 0
 --- !u!1102 &4532185318084501623
 AnimatorState:
   serializedVersion: 6
@@ -2911,8 +3038,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 0
   _canReciveInput: 0
+  _canApplyRootMotion: 0
   _comboCount: 5
   enemyHitCount: 0
+  startMotion: 0
 --- !u!1101 &4812606701191159809
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -3085,8 +3214,10 @@ MonoBehaviour:
   _keyFrameMin: 0.4
   _keyFrameMax: 0.8
   _canReciveInput: 0
+  _canApplyRootMotion: 0
   _comboCount: 0
   enemyHitCount: 1
+  startMotion: 0
 --- !u!114 &5282488817631089288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3208,7 +3339,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.7
+  m_ExitTime: 0.61
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -3255,6 +3386,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _comboCount: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  DistanceToGround: 0.1
 --- !u!1101 &6482998259982128264
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -3295,8 +3430,10 @@ MonoBehaviour:
   _keyFrameMin: 0.4
   _keyFrameMax: 0.8
   _canReciveInput: 0
+  _canApplyRootMotion: 0
   _comboCount: 3
   enemyHitCount: 1
+  startMotion: 0
 --- !u!1102 &6904719651407550685
 AnimatorState:
   serializedVersion: 6
@@ -3345,8 +3482,10 @@ MonoBehaviour:
   _keyFrameMin: 0
   _keyFrameMax: 1
   _canReciveInput: 0
+  _canApplyRootMotion: 1
   _comboCount: 5
   enemyHitCount: 0
+  startMotion: 0
 --- !u!1101 &6941394789138903797
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

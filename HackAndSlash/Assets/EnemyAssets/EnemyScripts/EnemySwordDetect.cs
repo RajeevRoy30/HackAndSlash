@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySwordDetect : MonoBehaviour
 {
     public Collider detect;
+    [SerializeField]EnemyData enemyData;
     private void OnEnable()
     {
         detect = GetComponent<Collider>();
@@ -14,7 +15,15 @@ public class EnemySwordDetect : MonoBehaviour
     {
         if (other.TryGetComponent(out Animator animator))
         {
-            animator.SetInteger("HitValue", 1);
+            animator.SetInteger("HitValue", enemyData.hitValue);
+            Debug.Log("iohje");
+        }
+    }
+     private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out Animator animator))
+        {
+            animator.SetInteger("HitValue", enemyData.hitValue);
             Debug.Log("iohje");
         }
     }

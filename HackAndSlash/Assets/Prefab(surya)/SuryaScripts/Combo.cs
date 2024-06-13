@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Combo : StateMachineBehaviour
@@ -8,21 +9,42 @@ public class Combo : StateMachineBehaviour
     [SerializeField]float _keyFrameMin,_keyFrameMax;
     [SerializeField] bool _canReciveInput;
     int AnimComboID = Animator.StringToHash("ComboValue");
+    [SerializeField] bool _canApplyRootMotion;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.applyRootMotion = true;
         //PlayerManager.Instance._ThirdPersonControllerInstance._canMove = false;
         PlayerManger.instance.ThirdPersonControllerInstance.canMove=false;
-        Debug.LogError("t");
+        //Debug.LogError("t");
         _canReciveInput=true;
+       
     }
     [SerializeField] int _comboCount;
     //MonoBehaviour mono = new MonoBehaviour();
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
 
     public int enemyHitCount;
+    Vector3 Dir;
+    Quaternion lookAt, temp;
+    [SerializeField] float startMotion;
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        // temp = PlayerManger.instance.combatSystemInstance.EnemyRef.position;
+        //temp.y = animator.transform.position.y;
+        //PlayerManger.instance.ThirdPersonControllerInstance.transform.transform.LookAt(temp);
+        Vector3 direction = PlayerManger.instance.combatSystemInstance.EnemyRef.position - animator.transform.position;
+        direction.y = 0; // Keep the rotation only in the horizontal plane
+        if (direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            animator.rootRotation = Quaternion.Slerp(animator.rootRotation, lookRotation, Time.deltaTime * 5f); // Smooth the rotation
+        }
+
+        // Apply the root motion position from the animator
+        animator.transform.position += animator.deltaPosition;
+
+
+
         if (PlayerManger.instance.starterAssetsInputsInstance.inputActions.Player.Attack.WasPressedThisFrame() && stateInfo.normalizedTime> _keyFrameMin && stateInfo.normalizedTime < _keyFrameMax && _canReciveInput)
         {
             
@@ -30,8 +52,11 @@ public class Combo : StateMachineBehaviour
             animator.SetInteger(AnimComboID, _comboCount);
             //mono.StartCoroutine(Motion(stateInfo.length,animator));
             PlayerManger.instance.ThirdPersonControllerInstance.HitCount = enemyHitCount;
+            //temp = animator.transform.position;
+            //temp.y = PlayerManger.instance.combatSystemInstance.EnemyRef.position.y;
+            // animator.transform.LookAt(Vector3.zero);
         }
-       
+
 
     }
 
@@ -41,11 +66,6 @@ public class Combo : StateMachineBehaviour
         //if(stateInfo.length>1)
        // animator.applyRootMotion = false;
         _canReciveInput = true;
-    }
-    IEnumerator Motion(float time,Animator anim)
-    {
-        
-        yield return new WaitForSeconds(time);
     }
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

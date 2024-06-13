@@ -16,9 +16,16 @@ public class Testing : MonoBehaviour
     }
 
     // Update is called once per frame
+    public Vector3 offset;
+    public float dis;
+    public float radius;
     void Update()
     {
-        
+        if (Physics.SphereCast(transform.position, radius, Vector3.forward, out RaycastHit hitInfo, dis, 11))
+        {
+            if(hitInfo.collider != null) { Debug.Log(hitInfo.collider.gameObject.name); }
+           
+        }
     }
 
     public void StealthTakeDown()

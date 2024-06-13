@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif
@@ -102,7 +103,7 @@ namespace StarterAssets
         private PlayerInput _playerInput;
 #endif
         public Animator _animator;
-        private CharacterController _controller;
+        [HideInInspector] public CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
 
@@ -156,11 +157,13 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
-
+        Vector3 temp;
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
-
+            //temp = PlayerManger.instance.combatSystemInstance.EnemyRef.position;
+            //temp.y = transform.position.y;
+            //transform.LookAt(temp);
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -406,6 +409,15 @@ namespace StarterAssets
         {
             PlayerManger.instance.SwordDetectionInstance.detect.enabled =false;
             Debug.LogError("Disable");
+        }
+        public IEnumerator RotationAndApplyRootMotion(float time)
+        {
+            temp = transform.position;
+            temp.y = PlayerManger.instance.combatSystemInstance.EnemyRef.position.y;
+            transform.LookAt(temp);
+            yield return new WaitForSeconds(time);
+            _animator.applyRootMotion = true;
+            
         }
     }
 }

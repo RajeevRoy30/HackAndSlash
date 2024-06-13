@@ -8,20 +8,25 @@ using UnityEngine.UI;
 
 public class ChaseState : StateMachineBehaviour
 {
-    bool check;
     public EnemyData enemyData;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!check)
+        if (enemyData == null && animator.TryGetComponent(out EnemyData enemy))
         {
-            enemyData = animator.GetComponent<EnemyData>();
+            enemyData = enemy;
         }
         enemyData.agent.isStopped = false;
         enemyData.agent.speed = enemyData.chaseSpeed;
         if (animator.applyRootMotion == true) { animator.applyRootMotion = false; }
     }
+    [SerializeField] float JumpAttackMin,JumpAttacMax;
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //if (EnemyHolder.instance.CalculateDistance(animator.transform.position) >= JumpAttackMin&& EnemyHolder.instance.CalculateDistance(animator.transform.position) <=JumpAttacMax)
+        //{
+        //    Debug.LogError("JumpAttack Performed");
+        //    animator.SetTrigger("SpecialAttack");
+        //}
         animator.SetBool("EnemyIdle", EnemyHolder.instance.CalculateDistance(animator.transform.position) <= enemyData.minDistanceWalk);
         animator.SetBool("EnemyWalk", EnemyHolder.instance.CalculateDistance(animator.transform.position) > enemyData.minDistanceWalk && EnemyHolder.instance.CalculateDistance(animator.transform.position) <= enemyData.maxDistanceWalk);
         animator.SetBool("EnemyChase", EnemyHolder.instance.CalculateDistance(animator.transform.position) > enemyData.maxDistanceWalk);
