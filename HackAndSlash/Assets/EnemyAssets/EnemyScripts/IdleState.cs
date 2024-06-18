@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class IdleState : StateMachineBehaviour
 {
     public EnemyData enemyData;
-    [SerializeField] float TimeToAttack;
-    float TimerCounter;
+    [SerializeField] public float TimeToAttack;
+    [HideInInspector] public float TimerCounter;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (enemyData == null && animator.TryGetComponent(out EnemyData enemy))

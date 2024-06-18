@@ -9,6 +9,7 @@ public class EnemySwordDetect : MonoBehaviour
     private void OnEnable()
     {
         detect = GetComponent<Collider>();
+        detectMask = LayerMask.GetMask("Player");
     }
     [SerializeField] LayerMask mask;
     private void OnTriggerEnter(Collider other)
@@ -16,15 +17,35 @@ public class EnemySwordDetect : MonoBehaviour
         if (other.TryGetComponent(out Animator animator))
         {
             animator.SetInteger("HitValue", enemyData.hitValue);
-            Debug.Log("iohje");
+            Debug.Log(enemyData.hitValue);
         }
     }
-     private void OnTriggerStay(Collider other)
+
+    [Header("DetectionSystem")]
+    [SerializeField] int detectMask;
+    [SerializeField] float radius;
+    [SerializeField] Vector3 offset;
+    Collider[] hitColliders;
+
+    public Collider SwordDetectEnemy()
     {
-        if (other.TryGetComponent(out Animator animator))
+        hitColliders = Physics.OverlapSphere(transform.position+offset, radius, detectMask);
+        foreach (Collider collider in hitColliders) 
         {
-            animator.SetInteger("HitValue", enemyData.hitValue);
-            Debug.Log("iohje");
+            if(collider)
+            {
+                Debug.Log(collider.gameObject);
+                return collider;
+            }
         }
+        return null;
     }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        //Check that it is being run in Play Mode, so it doesn't try to draw this in Editor mode
+            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+            Gizmos.DrawWireSphere(transform.position+ offset, radius);
+    }
+    
 }

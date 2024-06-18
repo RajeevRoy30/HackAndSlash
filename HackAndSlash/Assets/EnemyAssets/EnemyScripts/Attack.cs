@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,7 +14,9 @@ public class Attack : StateMachineBehaviour
     //Transform player;
     //public float attackRange = 2f;
     EnemyData enemyData;
-
+    [SerializeField]float swordDetectstart, swordDetectend;
+    [SerializeField] int comboCount,HitValue;
+    [SerializeField] bool check;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -30,17 +33,37 @@ public class Attack : StateMachineBehaviour
             enemyData = enemy;
         }
         enemyData.hitValue = HitValue;
+        check = true;
         //animator.transform.GetComponent<NavMeshAgent>().enabled=false;
 
     }
-    [SerializeField] int comboCount,HitValue;
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        SwordDetect(stateInfo);
         if(EnemyHolder.instance.CalculateDistance(animator.transform.position)<=1.5f)
             animator.SetInteger("EnemyAttack", comboCount);
         else
             animator.SetInteger("EnemyAttack", 0);
+        
+    }
+
+    public void SwordDetect(AnimatorStateInfo stateInfo)
+    {
+        if (stateInfo.normalizedTime >= swordDetectstart && stateInfo.normalizedTime <= swordDetectend)
+        {
+            Debug.LogError(enemyData.detect.SwordDetectEnemy().gameObject.name);
+            Debug.LogError("LOL");
+            if (enemyData.detect.SwordDetectEnemy() != null && check)
+            {
+                check = false;
+                if (enemyData.detect.SwordDetectEnemy().TryGetComponent(out Animator animatorREF))
+                {
+                    animatorREF.SetInteger("HitValue", enemyData.hitValue);
+                    Debug.Log(enemyData.hitValue);
+                }
+            }
+        }
     }
 
 

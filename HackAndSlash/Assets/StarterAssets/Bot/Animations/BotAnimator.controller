@@ -150,8 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7d9753da763da46a77921ebad4fc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordDetectstart: 0
+  swordDetectend: 1
   comboCount: 2
   HitValue: 1
+  check: 0
 --- !u!1102 &-6137442047402230049
 AnimatorState:
   serializedVersion: 6
@@ -193,6 +196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303aed8890bec6b439a79b0b4f13722d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordDetectstart: 0
+  swordDetectend: 1
+  comboCount: 0
+  HitValue: 4
+  check: 0
 --- !u!1102 &-5371376653445528265
 AnimatorState:
   serializedVersion: 6
@@ -485,6 +493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 0}
   TimeToAttack: 0.8
+  TimerCounter: 0
 --- !u!1102 &-2472305581882595643
 AnimatorState:
   serializedVersion: 6
@@ -525,8 +534,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7d9753da763da46a77921ebad4fc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordDetectstart: 0
+  swordDetectend: 0
   comboCount: 0
   HitValue: 0
+  check: 0
 --- !u!1101 &-1878768690112120995
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -586,8 +598,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7d9753da763da46a77921ebad4fc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordDetectstart: 0
+  swordDetectend: 1
   comboCount: 3
   HitValue: 2
+  check: 0
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -873,8 +888,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7d9753da763da46a77921ebad4fc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordDetectstart: 0
+  swordDetectend: 1
   comboCount: 0
   HitValue: 3
+  check: 0
 --- !u!1101 &3755594753881965142
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1054,6 +1072,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303aed8890bec6b439a79b0b4f13722d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordDetectstart: 0
+  swordDetectend: 0
+  comboCount: 0
+  HitValue: 0
+  check: 0
 --- !u!1107 &8456357574021045086
 AnimatorStateMachine:
   serializedVersion: 6

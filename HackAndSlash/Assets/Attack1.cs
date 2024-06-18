@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Attack1 : StateMachineBehaviour
+public class Attack1 : Attack
 {
     private EnemyData enemyData;
     Vector3 temp;
@@ -18,14 +18,15 @@ public class Attack1 : StateMachineBehaviour
         }
         temp=EnemyHolder.instance.player.transform.position;
         enemyData.agent.SetDestination(temp);
-        enemyData.EnableSwordCollider();
-        enemyData.hitValue = 4;
-        enemyData.hitValue = 0;
+        //enemyData.EnableSwordCollider();
+        //enemyData.hitValue = 4;
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        SwordDetect(stateInfo);
        // ConbactManager.instance.canRecieveInput=true;
         //if (ConbactManager.instance.inputRecieved)
         //{
@@ -42,8 +43,8 @@ public class Attack1 : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyData.DisableSwordCollider();
-        
+        //enemyData.DisableSwordCollider();
+        //enemyData.hitValue = 0;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

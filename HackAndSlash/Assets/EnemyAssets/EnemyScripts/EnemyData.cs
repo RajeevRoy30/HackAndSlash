@@ -21,6 +21,7 @@ public class EnemyData : MonoBehaviour
 
     public float Health = 100f;
     public Collider SwordCollider;
+    public EnemySwordDetect detect;
 
     public int hitValue; 
     private void OnEnable()
@@ -35,7 +36,7 @@ public class EnemyData : MonoBehaviour
     }
     public void EnableSwordCollider()
     {
-        SwordCollider.enabled=true;
+        //SwordCollider.enabled=true;
     }
-    public void DisableSwordCollider() { SwordCollider.enabled = false; }
+    public void DisableSwordCollider() { }//SwordCollider.enabled = false; }
 }
