@@ -21,7 +21,7 @@ public class EnemyData : MonoBehaviour
 
     public float Health = 100f;
     public Collider SwordCollider;
-    public EnemySwordDetect detect;
+    public CustomBoxDetection detect;
 
     public int hitValue; 
     private void OnEnable()
@@ -29,6 +29,7 @@ public class EnemyData : MonoBehaviour
         agent=GetComponent<NavMeshAgent>();
         minDistanceWalk = agent.stoppingDistance;
         animator=GetComponent<Animator>();
+        detect=transform.GetComponentInChildren<CustomBoxDetection>();
         //transform.GetComponent<Animator>().CrossFade("LoadState",1);
         //player=GameObject.FindWithTag("Player").GetComponent<Transform>();
         ////EnemyDataInstance = this;

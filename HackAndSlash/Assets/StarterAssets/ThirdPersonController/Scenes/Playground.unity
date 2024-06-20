@@ -567,6 +567,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317959156}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &332288127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 332288128}
+  - component: {fileID: 332288129}
+  m_Layer: 7
+  m_Name: Detect
+  m_TagString: SwordDetect
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &332288128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332288127}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.251, z: 0.911}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1655376447}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332288129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332288127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0be719fb4e8211f409ae3ad26f10a006, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0.4
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &382553706 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2070925442191277755, guid: a1a802ecaf6775746bb2a929fb554ad8,
@@ -1408,6 +1456,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: []
   player: {fileID: 0}
+--- !u!1 &1085536000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1085536001}
+  - component: {fileID: 1085536002}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: SwordDetect
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1085536001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085536000}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0006174651, y: 0.008715132, z: 0.009255826, w: 0.99991906}
+  m_LocalPosition: {x: -0.005, y: 0.425, z: 0.004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1645104638}
+  m_LocalEulerAnglesHint: {x: -0.08, y: 0.998, z: 1.06}
+--- !u!114 &1085536002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085536000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207d8553e15096c4a96ea9c7277488c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCenter: {x: 0, y: 0, z: 0}
+  boxSize: {x: 0.09, y: 0.66, z: 0.02}
+  boxOrientation: {x: 0, y: 0, z: 0, w: 1}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &1095349654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2114,18 +2212,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a802ecaf6775746bb2a929fb554ad8, type: 3}
---- !u!114 &1510224182 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 349005906687754788, guid: 00982af0880f3534f90dfea702fd9733,
-    type: 3}
-  m_PrefabInstance: {fileID: 6283022170912265167}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afbbf03a17ed52d41982437f48f4e7e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1514208134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2231,6 +2317,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514208134}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1645104638 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4531269722266407589, guid: 00982af0880f3534f90dfea702fd9733,
+    type: 3}
+  m_PrefabInstance: {fileID: 6283022170912265167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1655376447 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2943819606297835148, guid: 64dce48905ffd9b4293e595fa6941544,
+    type: 3}
+  m_PrefabInstance: {fileID: 1762682258}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1695808042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3072098596228728981, guid: 00982af0880f3534f90dfea702fd9733,
@@ -2245,6 +2343,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3158947955380035111, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
+      propertyPath: SwordDetectionInstance
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2310,9 +2413,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d27f6d8996dce044b8d4c1db7442c4d6, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3959750759243595492, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+    - {fileID: 6400027122180573218, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+    - {fileID: 7384268797095972350, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2943819606297835148, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 332288128}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
 --- !u!114 &1762682259 stripped
@@ -3453,6 +3563,11 @@ PrefabInstance:
       propertyPath: offset.y
       value: 0.19
       objectReference: {fileID: 0}
+    - target: {fileID: 349005906687754788, guid: 00982af0880f3534f90dfea702fd9733,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1518138787084999356, guid: 00982af0880f3534f90dfea702fd9733,
         type: 3}
       propertyPath: m_Name
@@ -3523,11 +3638,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4531269724005764991, guid: 00982af0880f3534f90dfea702fd9733,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6629702117738129818, guid: 00982af0880f3534f90dfea702fd9733,
         type: 3}
       propertyPath: detect
       value: 
-      objectReference: {fileID: 1510224182}
+      objectReference: {fileID: 0}
     - target: {fileID: 6629702117738129818, guid: 00982af0880f3534f90dfea702fd9733,
         type: 3}
       propertyPath: SwordCollider
@@ -3538,9 +3658,16 @@ PrefabInstance:
       propertyPath: minDistanceWalk
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 349005906687754788, guid: 00982af0880f3534f90dfea702fd9733, type: 3}
+    - {fileID: 4395446095635722190, guid: 00982af0880f3534f90dfea702fd9733, type: 3}
+    - {fileID: 4892734175920858879, guid: 00982af0880f3534f90dfea702fd9733, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4531269722266407589, guid: 00982af0880f3534f90dfea702fd9733,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1085536001}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00982af0880f3534f90dfea702fd9733, type: 3}
 --- !u!4 &8118167894928555152 stripped

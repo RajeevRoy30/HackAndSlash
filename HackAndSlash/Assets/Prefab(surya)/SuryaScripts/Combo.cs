@@ -17,7 +17,9 @@ public class Combo : StateMachineBehaviour
         PlayerManger.instance.ThirdPersonControllerInstance.canMove=false;
         //Debug.LogError("t");
         _canReciveInput=true;
-       
+        check=true;
+
+
     }
     [SerializeField] int _comboCount;
     //MonoBehaviour mono = new MonoBehaviour();
@@ -27,6 +29,8 @@ public class Combo : StateMachineBehaviour
     Vector3 Dir;
     Quaternion lookAt, temp;
     [SerializeField] float startMotion;
+    [SerializeField] float swordDetectstart, swordDetectend;
+    bool check;
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // temp = PlayerManger.instance.combatSystemInstance.EnemyRef.position;
@@ -39,9 +43,21 @@ public class Combo : StateMachineBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             animator.rootRotation = Quaternion.Slerp(animator.rootRotation, lookRotation, Time.deltaTime * 5f); // Smooth the rotation
         }
-
-        // Apply the root motion position from the animator
-        animator.transform.position += animator.deltaPosition;
+        if (stateInfo.normalizedTime >= swordDetectstart && stateInfo.normalizedTime <= swordDetectend)
+        {
+            // Debug.LogError(enemyData.detect.ReturnCollider().gameObject.name);
+            Debug.LogError("LOL");
+            if (PlayerManger.instance.ThirdPersonControllerInstance.detect.ReturnCollider() != null && check)
+            {
+                check = false;
+                if (PlayerManger.instance.ThirdPersonControllerInstance.detect.ReturnCollider().TryGetComponent(out Animator animatorREF))
+                {
+                    animatorREF.SetInteger("EnemyHit", 1);
+                }
+            }
+        }
+                    // Apply the root motion position from the animator
+            animator.transform.position += animator.deltaPosition;
 
 
 

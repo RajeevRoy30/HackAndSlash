@@ -52,12 +52,12 @@ public class Attack : StateMachineBehaviour
     {
         if (stateInfo.normalizedTime >= swordDetectstart && stateInfo.normalizedTime <= swordDetectend)
         {
-            Debug.LogError(enemyData.detect.SwordDetectEnemy().gameObject.name);
+           // Debug.LogError(enemyData.detect.ReturnCollider().gameObject.name);
             Debug.LogError("LOL");
-            if (enemyData.detect.SwordDetectEnemy() != null && check)
+            if (enemyData.detect.ReturnCollider() != null && check)
             {
                 check = false;
-                if (enemyData.detect.SwordDetectEnemy().TryGetComponent(out Animator animatorREF))
+                if (enemyData.detect.ReturnCollider().transform.TryGetComponent(out Animator animatorREF))
                 {
                     animatorREF.SetInteger("HitValue", enemyData.hitValue);
                     Debug.Log(enemyData.hitValue);

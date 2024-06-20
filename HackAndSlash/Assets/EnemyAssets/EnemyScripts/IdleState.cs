@@ -14,7 +14,7 @@ public class IdleState : StateMachineBehaviour
         {
             enemyData = enemy;
         }
-        enemyData.SwordCollider.enabled = false;
+        //enemyData.SwordCollider.enabled = false;
         enemyData.agent.isStopped = true;
         enemyData.agent.speed = 0;
         TimerCounter = Time.time;
